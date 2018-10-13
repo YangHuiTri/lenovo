@@ -1,0 +1,35 @@
+/**
+ * Created by wupeng5 on 2015/11/10.
+ */
+var $GRUNTCONFIG = {
+    "DEV":{
+        lenovoSearchUrl:"http://s.lenovouat.cn",
+        lenovoCartUrl:"http://cart.b2c.lenovouat.cn/",
+        thinkCartUrl:"http://cart.think.lenovouat.cn/",
+        thinkDetail: "http://s.lenovouat.cn/pm/",
+        thinkPadDetail: "http://thinkpad.lenovouat.cn/product/",
+        lenovoDetail: "http://www.lenovouat.cn/product/",
+        favoriteThinkUrl:"http://www.tks.lenovouat.cn/api/",
+        favoriteLenovoUrl:"http://www.lenovouat.cn/api/"
+    },
+    "UAT":{
+        lenovoSearchUrl:"http://s.lenovouat.cn",
+        lenovoCartUrl:"http://cart.b2c.lenovouat.cn/",
+        thinkCartUrl:"http://cart.think.lenovouat.cn/",
+        thinkDetail: "http://www.tks.lenovouat.cn/pm/",
+        thinkPadDetail: "http://thinkpad.lenovouat.cn/product/",
+        lenovoDetail: "http://www.lenovouat.cn/product/",
+        favoriteThinkUrl:"http://www.tks.lenovouat.cn/api/",
+        favoriteLenovoUrl:"http://www.lenovouat.cn/api/"
+    },
+    "PRODUCTION":{
+        lenovoSearchUrl:"http://s.lenovo.com.cn",
+        lenovoCartUrl:"http://cart.lenovo.com.cn/",
+        thinkCartUrl:"http://cart.thinkworldshop.com.cn/",
+        thinkDetail: "http://www.thinkworldshop.com.cn/pm/",
+        thinkPadDetail: "http://thinkpad.lenovo.com.cn/product/",
+        lenovoDetail: "http://www.lenovo.com.cn/product/",
+        favoriteThinkUrl:"http://www.thinkworldshop.com.cn/api/",
+        favoriteLenovoUrl:"http://www.lenovo.com.cn/api/"
+    }
+}

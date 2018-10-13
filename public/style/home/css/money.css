@@ -1,0 +1,333 @@
+*{
+	padding:0px;
+	margin:0px;
+	font-family:微软雅黑;
+}
+ul{
+	list-style:none;}
+a{  color:#000;
+	text-decoration: none;
+}
+body{
+	
+	font-size:12px;
+	background:#fff;
+}
+em{
+	font-style:normal;
+}
+.clear{
+	float:both;
+}
+/*头部*/
+.header {
+    margin: 0 auto;
+    padding-top: 4px;
+    background: #f9f9f9;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: solid 1px #d2d2d2;
+}
+.user_content {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+.userinfo {
+    float: right;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.userinfo span {
+    padding: 0 5px;
+    cursor: pointer;
+}
+.steps {
+    margin: 0 auto;
+    width: 1200px;
+    height: 80px;
+    text-align: center;
+}
+.pageInfo {
+    float: left;
+    width: 210px;
+    height: 80px;
+}
+.pageInfo a {
+    background: url(../img/789.png) left center no-repeat;
+    display: block;
+    width: 210px;
+    height: 30px;
+    margin-top: 25px;
+}
+.step {
+    width: 450px;
+    text-align: right;
+    color: #8b8b8b;
+    float: right;
+    background: url(../img/steps.png) no-repeat right center;
+}
+.step ul {
+    float: right;
+}
+.step li {
+    padding-left: 70px;
+    text-align: right;
+    float: left;
+    padding-top: 45px;
+}
+/*内容区*/
+.content_wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+.info {
+    border: solid 1px #d8d8d8;
+    border-top: solid 2px #e2231a;
+    font-size: 13px;
+    background:#eee;
+    height:124px;
+}
+.info .con {
+    margin: 20px 0 0;
+    text-align: left;
+    float: left;
+}
+.info .left {
+    width: 120px;
+    height: 100px;
+    float: left;
+}
+.info .icon {
+    display: block;
+    margin-top: 14px;
+    margin-left: 41px;
+    width: 45px;
+    height: 43px;
+    background: url(../img/789.png) -217px -9px;
+}
+.info .right {
+    float: left;
+    width: 1024px;
+    font-size: 14px;
+    position: relative;
+}
+.info .detail {
+    float: left;
+    padding-bottom: 10px;
+    position: relative;
+    width: 100%;
+}
+.ledou_span{
+	display:none;
+}
+.dead_time, .persist_time {
+    color: #dd242a;
+}
+.total{
+	color:#dd242a;
+}
+#order_show_msg_p{
+	display:none;
+}
+.money {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+.show_more em {
+    background: url(../img/789.png) no-repeat -308px -25px;
+    float: right;
+    margin: 5px -69px;
+    width: 10px;
+    height: 10px;
+    /*background:#000;*/
+}
+.hidden{
+	display:none;
+}
+.order_show_msg_p{
+	display:none;
+}
+.info p {
+    height: 15px;
+    line-height: 15px;
+    padding-bottom: 10px;
+}
+.info li {
+    height: 100%;
+    line-height: 20px;
+}
+.info .more {
+    float: left;
+    padding: 10px 0;
+    width: 100%;
+    display: none;
+}
+/*支付方式*/
+.payment {
+    margin-top: 10px;
+    border: solid 1px #d8d8d8;
+    padding-bottom: 44px;
+}
+.payment .title {
+    height: 33px;
+    background: #eee;
+    line-height: 33px;
+    padding-left: 25px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+.pay_types {
+    width: 1100px;
+    margin: 0 auto;
+}
+.pay_type_title {
+    height: 55px;
+    line-height: 65px;
+    text-align: left;
+    font-size: 16px;
+}
+.pay_plats {
+    margin-top: -6px;
+}
+.pay_types .pay_plats li{
+    width:110px;
+    height:30px;
+}
+.pay_types .pay_plats li.active {
+    border: 1px solid #e2231a;
+    background: url(../img/pay_selected.png) right top no-repeat;
+}
+.pay_types li a {
+    display: block;
+    height: 100%;
+}
+.pay_types .pay_plats li .zfpttint1 {
+    position: absolute;
+    bottom: -19px;
+    left: 0;
+    line-height: 14px;
+    text-align: left;
+    color: darkgray;
+
+}
+.pay_types .pay_plats li .zfpttint2 {
+    position: absolute;
+    top: 55px;
+    left: 0px;
+    line-height: 14px;
+    text-align: left;
+    color: darkgrey;
+}
+.pay_type2, .pay_type3 {
+    padding-bottom: 13px;
+    border-bottom: dashed 1px #d2d2d2;
+}
+.pay_type2 img{
+    height:35px;
+    width:109px;
+}
+.pay_type1 img{
+    height:35px;
+    width:109px;
+}
+.pay_type2,.pay_type1{
+    height:193px;
+    width:1100px;
+}
+.pay_type_title {
+    height: 55px;
+    line-height: 65px;
+    text-align: left;
+    font-size: 16px;
+}
+.hidden {
+    display: none;
+}
+.pay_types .pay_plats li {
+    float: left;
+    border: 1px solid #d8d8d8;
+    padding: 10px 20px;
+    margin: 10px;
+    position: relative;
+}
+.pay_types li a {
+    display: block;
+    height: 100%;
+}
+/*.pay_type4 {
+    height:400px;
+    width:1100px;
+}*/
+.fenqi {
+    width: 1085px;
+    margin: 0 auto;
+}
+.fenqi h1 {
+    font-size: 18px;
+    font-weight: normal;
+    height:1085px;
+    height:24px;
+    margin-top:18px;
+    margin-bottom: 24px;
+    margin-top: 18px;
+}
+.fenqi h1 span {
+    float: right;
+    font-size: 12px;
+    color: #9e9e9e;
+    display: inline-flex;
+}
+.date div {
+    width: 89px;
+    height: 58px;
+    float: left;
+    text-align: center;
+    line-height: 58px;
+    font-size: 18px;
+    font-family: 微软雅黑;
+    margin-right: 40px;
+    cursor: pointer;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(217, 216, 214);
+}
+div.xinyka .fenqi-btn {
+    width: 125px;
+    height: 37px;
+    margin-left: 100px;
+    margin-top: 24px;
+    background: rgb(226, 35, 26);
+    border-radius: 5px;
+}
+.fenqi-btn a {
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: 微软雅黑;
+    display: block;
+    text-align: center;
+    line-height: 36px;
+}   
+
+/*footer*/
+.footer {
+    background: #f9f9f9;
+    height: 105px;
+    margin-top: 25px;
+    padding-top: 25px;
+    text-align: center;
+}
+.ns_footer_line {
+    padding: 4px 0;
+    color: #000;
+}
+.ns_footer_line span {
+    margin: 0 8px;
+}

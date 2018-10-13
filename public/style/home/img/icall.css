@@ -1,0 +1,154 @@
+﻿@charset "UTF-8";
+ /*选择套餐浮层css*/
+body,div,p,ul,li,dl,dt,dd{  margin: 0; padding: 0; font-family: 'Microsoft YaHei';}
+ul,li{ list-style: none;}
+.clearfix:after{content:' ';clear:both;display:table;height:0;visibility:hidden;line-height:0}
+.D{ width: 100%; height: 100%; background: rgba(0,0,0,.3); position: fixed; z-index: 999; font-size: 14px;display: none;top:0px;}
+.D .closeIcon{ color: #B8B3AD; position: absolute; right: 0; top: 0; width:36px; height: 36px; text-align: center; line-height: 36px; vertical-align: middle; cursor: pointer;}
+
+.selectPackage{ position: absolute; width: 900px; height: 520px; border: 4px solid #DFDCD8;
+left: 50%; top: 50%; margin: -312px 0 0 -452px; background: #fff; border-radius: 3px;
+}
+.selectTitle{ background: #F3F2F0; height: 36px; line-height: 36px; color: #64625E; text-indent: 15px;}
+
+.packageContent{ padding: 10px 28px;}
+
+.packagePhone{border:1px solid #D7D4CF; height: 42px; line-height: 42px; color: #494947; padding: 0 10px; margin-bottom: 10px; background: #fff}
+.packagePhone .phonetype{ float: left;}
+.packagePhone .price{ float: right;}
+.packagePhone .price span{ color: #FB0000}
+
+
+
+
+.packagedetail{ border:1px solid #D7D4CF; background: #F8F8F7; clear: both; padding: 5px 0 }
+.packagedetail dl {padding: 6px 0; display: block; clear: both; overflow: visible;*zoom:1;}
+.packagedetail dl:after{content:' ';clear:both;display:table;height:0;visibility:hidden;line-height:0}
+.packagedetail dl dt{ float: left; padding-left: 10px; }
+.packagedetail dl dd{ float: left;width: 85%;}
+
+.phonelocal{border:1px solid #D7D4CF;height: 28px; line-height: 28px;width: 80px; text-indent: 8px; position: relative; cursor: pointer; background: #fff;}
+#cityname{ position: absolute; background: #fff; width: 100%; height: 100%; z-index: 3;
+left: 0;
+border:1px solid #e2231a;
+color: #e2231a;
+}
+.triangle-down {
+	z-index: 4;
+	position: absolute;
+	right: 8px;
+	top: 11px;
+    width:0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #D7D4CF;
+}
+.triangle-down b{
+	position: absolute;
+	right: -6px;
+	top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fff;
+}
+
+.contractPeriod{ float: left; width:68px; height: 28px; line-height: 28px; text-align: center;
+border:1px solid #D7D4CF; margin-right: 10px; cursor: pointer;position: relative;
+ }
+.contractPeriod.selected,.packagetype.selected{border-color: #FB0000;color: #FB0000;}
+.packagetype{border:1px solid #D7D4CF;height: 28px; line-height: 28px; text-align: center; width: 240px;}
+
+.packagedetail .cityList{ background: #fff; border:1px solid #D7D4CF; width: 308px; height: 300px; font-size: 12px; position: absolute; top: 27px; left: -1px; z-index: 5; padding-top: 10px; overflow: hidden;
+}
+
+.packagedetail .cityList span{ float: left; display: block; width: 65px; height: 22px; line-height: 22px; text-align: center; margin: 5px; color: #6E6C67; cursor: pointer; text-indent: 0;
+/*opacity: 0;
+transition: opacity 0.35s ease-out, transform 0.35s ease-out;*/
+}
+
+
+/*.packagedetail .cityList span{  display: block; width: 100%;  text-align: center;  color: #6E6C67; cursor: pointer; height:47px;    
+        opacity:0;
+        pointer-events:none;
+        -webkit-transform:scale(1.1) translateY(-24px);
+        transform:scale(1.1) translateY(-24px);
+        -webkit-transition:opacity 0.35s ease-out, -webkit-transform 0.35s ease-out;
+        transition:opacity 0.35s ease-out, transform 0.35s ease-out
+}
+.packagedetail .active span{ opacity: 1;
+-webkit-transform: none;
+    transform: none;
+}*/
+.citys{ background: #fff; border:1px solid #D7D4CF; width: 308px; height: 300px; font-size: 12px; position: absolute; top: 27px; left: -1px; z-index: 5; padding-top: 10px; overflow: hidden;
+}
+
+.citys span{ float: left; display: block; width: 65px; height: 22px; line-height: 22px; text-align: center; margin: 5px; color: #6E6C67; cursor: pointer; text-indent: 0;}
+.citys span.selected{background: #FB0000;color: #fff;}
+.citys span:hover{background: #FB0000;color: #fff;}
+.packagedetail .active span:nth-child(1){transition-delay:0ms,0ms}
+.packagedetail .active span:nth-child(2){transition-delay:50ms,50ms}
+.packagedetail .active span:nth-child(3){transition-delay:100ms,100ms}
+.packagedetail .active span:nth-child(4){transition-delay:150ms,150ms}
+.packagedetail .active span:nth-child(5){transition-delay:200ms,200ms}
+.packagedetail .active span:nth-child(6){transition-delay:250ms,250ms}
+.packagedetail .active span:nth-child(7){transition-delay:300ms,300ms}
+.packagedetail .active span:nth-child(8){transition-delay:350ms,350ms}
+.packagedetail .active span:nth-child(9){transition-delay:400ms,400ms}
+.packagedetail .active span:nth-child(10){transition-delay:450ms,450ms}
+.numSearch{
+	background: #FB0000;
+    color: #fff;
+    padding: 0;
+    border: 0;
+    width: 86px;
+    height: 29px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0px 40px;
+    display: inline-block;
+}
+
+.packagedetail .active span:hover,.packagedetail .active span.selected{ background: #FB0000; color: #fff; border-radius: 2px;}
+.dataList{width: 100%; color: #4C4B49;    margin-left: 7%; margin-bottom: 15px; text-align:center; box-shadow: 0 1px 3px rgba(0,0,0,.3)}
+.dataList .thead{ text-align: center;}
+.dataList .tbody li span:hover,.dataList .tbody li span.selected{ background: #FB0000; color:white; cursor: pointer;}
+.dataList .tbody li{ height: 40px; line-height: 40px; background: #fff}
+.dataList .thead li span{ background: #CCEEF7; height: 30px;line-height: 30px; float: left; width: 18%;,
+}
+.dataList .tbody{ height: 200px; width: 100%; overflow-x:hidden; overflow-y:scroll; display: block; clear: both; }
+.dataList .tbody li span{float: left; width: 20%; text-align: center;}
+
+.dataList li span.firstChild{ width: 10%;}
+.detailmessages{ padding-right: 10px; color: #7A7772; font-size: 12px; line-height: 18px;}
+
+
+
+.checkPhoneNum{ margin-top: 10px; clear: both;}
+.checkPhoneNum input{ height: 28px; border: 1px solid #D7D4CF; line-height: 28px; padding: 0;outline: none;}
+.checkPhoneNum input.input{ text-indent: 3px;}
+.checkPhoneNum input.getcheckcode{ background: #FB0000; color: #fff;border: 1px solid #FB0000; padding: 0 15px;cursor: pointer;}
+.checkPhoneNum input.active{ border-color: #91C8FC}
+
+.packagefooter{ text-align: center; padding-top: 25px}
+.packagefooter p,.packagefooter a{color: #FB0000;}
+.packagefooter .btnconfirm{background: #FB0000;color: #fff;padding: 0; border: 0; width: 135px; height: 40px; line-height: 40px; border-radius: 3px; font-size: 18px; cursor: pointer; margin: 0px auto; display: inline-block; }
+.packagefooter .btnconfirm.disable{ background: #ccc; cursor: default;}
+   .triangle-topright {
+   display:none;
+        position:absolute;
+        top:0px;
+        right:0px;
+   	 	width: 0;
+    	height: 0;
+    	border-top: 10px solid red;
+    	border-left: 13px solid transparent; 
+}
+#roleList ul li:hover{
+	background: #FB0000; color:white; cursor: pointer;
+}
+.actived{
+	background: #FB0000; color:white; cursor: pointer;
+}

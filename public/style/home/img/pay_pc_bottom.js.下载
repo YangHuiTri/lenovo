@@ -1,0 +1,83 @@
+//农行分期
+//背景变色
+$(function(){
+	$(".bkbg").click(function(){
+		unchecked();
+		$(".bkbg").removeClass("red");
+		$(this).addClass("red");
+	});
+})
+
+//下拉
+$(function(){
+	$('.menuTitle').click(function(){
+		if($(this).siblings('.menuContent').css('display')=='none'){
+			$(this).siblings('.menuContent').css('display','block');
+			$(this).find('a').addClass('add');
+			$(this).find('span').html('收起');
+		}else{
+			$(this).siblings('.menuContent').css('display','none');
+			$(this).find('a').removeClass('add');
+			$(this).find('span').html('更多信息');
+		};
+	});
+
+    /**
+    *  银行显示
+    */
+    $("#pay_type2_div ul li:last").click(function(){
+        var xyState = $("#xyState").val();
+        if(xyState==1){
+            $('#pay_type2_div ul li:gt(0)').show();
+            $("#pay_type2_div ul li:last").show();
+            $("#pay_type2_div ul li:last").html('收起更多');
+            $("#xyState").val('2');
+        }else if(xyState==2){
+            $('#pay_type2_div ul li:gt(10)').hide();
+            $("#pay_type2_div ul li:last").show();
+            $("#pay_type2_div ul li:last").html('显示更多');
+            $("#xyState").val('3');
+        }else{
+            $('#pay_type2_div ul li:gt(0)').show();
+            $("#pay_type2_div ul li:last").show();
+            $("#pay_type2_div ul li:last").html('收起更多');
+            $("#xyState").val('2');
+        }
+
+    });
+});
+//
+//if(merchantid=='tk'){
+//    var products=$("#products").val();
+//    var orders=$("#orders").val();
+//    var orderArray=orders.substr(0,orders.length-1).split(";");
+//    var productArray=products.substr(0,products.length-1).split("&");
+//    for(var i=0;i<orderArray.length;i++){
+//        s.pageName="Thinkworld shop:购物车:订单成功";
+//        s.prop1="Thinkworld shop:购物车";
+//        s.prop2="Thinkworld shop:购物车";
+//        s.prop3="Thinkworld shop:购物车";
+//        s.prop4="Thinkworld shop:购物车";
+//        s.channel="Thinkworld shop";
+//        s.events="purchase";
+//        s.purchaseID=orderArray[i];
+//        s.products=productArray[i].substr(0,productArray[i].length-1);
+//        s.transactionID=orderArray[i];
+////        monitor_setdefaultprop();
+//        var s_code = s.t(); if (s_code) document.write(s_code)
+//    }
+//}else if(merchantid=='b2c'){
+//    var products=$("#products").val();
+//    var orders=$("#orders").val();
+//    var orderArray=orders.substr(0,orders.length-1).split(";");
+//    var productArray=products.substr(0,products.length-1).split("&");
+//    for(var i=0;i<orderArray.length;i++){
+//        s.events="purchase";
+//        s.purchaseID=orderArray[i];
+//        s.products=productArray[i].substr(0,productArray[i].length-1);
+//        var s_code = s.t(); if (s_code) document.write(s_code)
+//    }
+//}
+
+
+

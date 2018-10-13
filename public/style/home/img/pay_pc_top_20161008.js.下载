@@ -1,0 +1,1001 @@
+var url=location.search;
+ var Request = new Object();
+ var href = window.location.href;
+ if(url.indexOf("?")!=-1){
+    var str = url.substr(1);
+    strs= str.split("&");
+    for(var i=0;i<strs.length;i++){
+        Request[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+    }
+ }
+ plat = Request["plat"];
+ if(plat==4){
+    document.write('<link href="/logoico_shop.ico" rel="shortcut icon">');
+ }else if(plat==22){
+    document.write('<link href="/logoico_epp.ico" rel="shortcut icon">');
+ }
+ 
+ /**
+ *{
+ * orderId:"",
+ * orderAmount:,
+ * payType:"",
+ * fenQiList:[{}]
+ * }
+ * @type {json}
+ */
+ var fenqiPayInit=function(param){
+     $("#nonghang").show();
+	/**
+	 * 检查参数是否为空
+	 * 不为空时初始化变量
+	 * 如果检查不过，不处理任务业务
+	 */
+	if(!param){return;}
+	if(!param.orderId){return;}
+	var orderId=param.orderId;
+	if(!param.orderAmount){return;}
+	var orderAmount=param.orderAmount;
+	if(!param.payType){return;}
+	var payType=param.payType;
+	if(!param.fenQiList){return;}
+	var fenQiList=param.fenQiList;
+
+	/**
+	 * payType 10为农行分期
+	 */
+	if(payType=="10") {
+		jQuery("#nfenqi-date-num").html("");
+		var descTitleHtml='',descConHtml='';
+		for (var i = 0; i < fenQiList.length; i++) {
+			if (fenQiList[i]) {
+				/**
+				 * 初始化分期列表html
+				 */
+				jQuery("#nfenqi-date-num").append('<div orderId="'+orderId+'" order_amount="'+orderAmount+'" num="' + fenQiList[i].fenQiNum + '" rate="'+fenQiList[i].fenQiRate+'" class="bgse">'+fenQiList[i].fenQiNum+'期<img src="images/icon-3.jpg"></div>');
+				/**
+				 * 初始化分期费率说明表
+				 *
+				 */
+				descTitleHtml+=' <td width="100">'+(fenQiList[i].fenQiNum)+'期</td>';
+				descConHtml+=' <td>'+(fenQiList[i].fenQiRate*100)+'%</td>';
+			}
+		}
+		var descTable='<table cellspacing="0" cellpadding="0"><tbody> <tr height="25" class="tr"><td width="180">银行</td><td width="100">最低限额</td>'+descTitleHtml+'</tr>';
+		descTable+=' <tr height="35"> <td>中国农业银行</td> <td>'+500+'元</td>'+descConHtml+'</tr></tbody></table>'
+		
+		jQuery("#fenqi-desc-list").html(descTable);
+		$(".bgse").click(function(){
+			/**
+			 * 处理分期用户选中时的样式
+			 * 加上选中样式
+			 * 去掉其它分期的选中样式
+			 */
+			$(".bgse").removeClass("red");
+			unchecked();
+			$("#nhfq").addClass('red');
+			$(this).addClass("red");
+
+			/***
+			 * 选中切换分期每期费用说明
+			 */
+			var orderId=jQuery(this).attr("orderId");
+			var orderAmount=parseFloat(jQuery(this).attr("order_amount"));
+			var num=parseInt(jQuery(this).attr("num"));
+			var rate=parseFloat(jQuery(this).attr("rate"));
+            var shopId = $("#shopId").val();
+            var terminal = $("#terminal").val();
+			//jQuery("#nfenqi-date-num-selected-desc").html('<b>'+(num)+'期，每期金额约为'+(orderAmount*(1+rate)/num).toFixed(2)+'元，总计约'+(orderAmount*(1+rate)).toFixed(2)+'元（银行收取'+(rate*100)+'%手续费）</b>');
+			jQuery("#fenqi-pay-button").attr("url-data","orderMainCode="+orderId+"&InstallmentNum="+num+"&plat=4&merchantCode="+merchantid+"&paymentTypeCode=10&shopId=" + shopId + "&terminal=" + terminal);
+		   	var  lenovoid ="";//$("input:hidden[id = lenovoId ]").val();
+			lenovoid = passport.cookie.lenovoId;
+			SetCookie("userPayMethod", lenovoid+","+""+","+10);
+            var plat =  $("input:hidden[id = plat ]").val();
+			jQuery("#fenqi-pay-button").attr("href","/pay.jhtm?"+"lenovoId="+lenovoid+"&orderMainCode="+orderId+"&InstallmentNum="+num+"&plat="+plat+"&merchantCode="+merchantid+"&paymentTypeCode=10&shopId=" + shopId + "&terminal=" + terminal);
+		});
+	}
+ };
+
+/**
+ * 农行分期显示
+ */
+var openNHFQ=function(){
+    $("#huabei").hide();
+    $("#nonghang").show();
+}
+
+/**
+ * 花呗分期显示
+ */
+var openHBFQ=function(){
+    $("#nonghang").hide();
+    $("#huabei").show();
+}
+
+/**
+ * 花呗分期
+ * @param param
+ */
+var huaBeiFenqiPayInit=function(param){
+    //var cookie = getCookie("userPayMethod");
+    var display =$('#nhfq').css('display');
+    var isRed = $('#nhfq').is('.red');
+    if(isRed && display != 'none'){
+        $("#nonghang").show();
+        $("#huabei").hide();
+    }else{
+        $("#nonghang").hide();
+        $("#huabei").show();
+    }
+
+    /**
+     * 检查参数是否为空
+     * 不为空时初始化变量
+     * 如果检查不过，不处理任务业务
+     */
+    if(!param){return;}
+    if(!param.orderId){return;}
+    var orderId=param.orderId;
+    if(!param.orderAmount){return;}
+    var orderAmount=param.orderAmount;
+    if(!param.payType){return;}
+    var payType=param.payType;
+    if(!param.fenQiList){return;}
+    var fenQiList=param.fenQiList;
+
+    /**
+     * payType 11为花呗分期
+     */
+    if(payType=="11") {
+        jQuery("#hfenqi-date-num").html("");
+        var descTitleHtml='',descConHtml='';
+        for (var i = 0; i < fenQiList.length; i++) {
+            if (fenQiList[i]) {
+                /**
+                 * 初始化分期列表html
+                 */
+                jQuery("#hfenqi-date-num").append('<div orderId="'+orderId+'" order_amount="'+orderAmount+'" num="' + fenQiList[i].fenQiNum + '" rate="'+fenQiList[i].fenQiRate+'" fqRatePro="'+fenQiList[i].fqRatePro+'" class="hbGBse">'+fenQiList[i].fenQiNum+'期<img src="images/icon-3.jpg"></div>');
+                /**
+                 * 初始化分期费率说明表
+                 *
+                 */
+                descTitleHtml+=' <td width="100">'+(fenQiList[i].fenQiNum)+'期</td>';
+                descConHtml+=' <td>'+(fenQiList[i].fenQiRate*100)+'%</td>';
+            }
+        }
+        var descTable='<table cellspacing="0" cellpadding="0"><tbody> <tr height="25" class="tr"><td width="180">银行</td><td width="100">最低限额</td>'+descTitleHtml+'</tr>';
+        descTable+=' <tr height="35"> <td>蚂蚁花呗</td> <td>'+500+'元</td>'+descConHtml+'</tr></tbody></table>'
+
+        jQuery("#fenqi-desc-list").html(descTable);
+        $(".hbGBse").click(function(){
+            /**
+             * 处理分期用户选中时的样式
+             * 加上选中样式
+             * 去掉其它分期的选中样式
+             */
+            $(".hbGBse").removeClass("red");
+            unchecked();
+            $("#hbfq").addClass('red');
+            $("#nhfq").removeClass("red");
+            $(this).addClass("red");
+
+            /***
+             * 选中切换分期每期费用说明
+             */
+            var orderId=jQuery(this).attr("orderId");
+            var orderAmount=parseFloat(jQuery(this).attr("order_amount"));
+            var num=parseInt(jQuery(this).attr("num"));
+            var rate=parseFloat(jQuery(this).attr("rate"));
+            var fqRatePro = parseFloat(jQuery(this).attr("fqRatePro"));
+
+            if(fqRatePro==100){
+                jQuery("#hfenqi-date-num-selected-desc").html('<b style="font-size: 15px;">'+(num)+'期，每期金额约'+(orderAmount/num).toFixed(2)+'元，总计约'+orderAmount+'元（免手续费）</b>');
+            }else{
+                jQuery("#hfenqi-date-num-selected-desc").html('<b style="font-size: 15px;">'+(num)+'期，每期金额约'+(orderAmount*((1-fqRatePro/100)*(1+rate)/num)).toFixed(2)+'元，总计约'+(orderAmount*((1-fqRatePro/100)*(1+rate))).toFixed(2)+'元（花呗收取'+((1-fqRatePro/100)*rate*100).toFixed(2)+'%手续费）</b>');
+            }
+
+            var  lenovoid ="";//$("input:hidden[id = lenovoId ]").val();
+            lenovoid = passport.cookie.lenovoId;
+            SetCookie("userPayMethod", lenovoid+","+""+","+11);
+            var plat =  $("input:hidden[id = plat ]").val();
+            //添加shopId,terminal
+            var shopId = $("#shopId").val();
+            var terminal = $("#terminal").val();
+            jQuery("#hbFenqi-pay-button").attr("url-data","lenovoId="+lenovoid+"&orderMainCode="+orderId+"&hbfqNum="+num+"&plat="+plat+"&merchantCode="+merchantid+"&paymentTypeCode=11&shopId=" + shopId + "&terminal=" + terminal);
+//            jQuery("#hbFenqi-pay-button").click(function(){
+//                payHuaBei("lenovoId="+lenovoid+"&orderMainCode="+orderId+"&hbfqNum="+num+"&plat="+plat+"&merchantCode="+merchantid+"&paymentTypeCode=11");
+//            });
+        });
+    }
+};
+ 
+ $().ready(function() {
+     $('.pay_y_j li a').mouseenter(function () {
+         $(this).next().show();
+     });
+     $('.pay_y_j li a').mouseleave(function () {
+         $(this).next().hide();
+     });
+//     if (merchantid != "epp" && merchantid != "tk") {
+//         cps();
+//     }
+
+		
+		
+		var plat =  $("input:hidden[id = plat ]").val();
+		var orderSize = $("input[name='order']").size();
+		var isHb = $("#isHb").val();
+		
+		if(orderSize!=0){
+			var lenovoId =  $("input:hidden[id = lenovoId ]").val();
+            var shopId = $("#shopId").val();
+            var terminal = $("#terminal").val();
+			$('.pay_is_hidden').show();
+			if(isHb == "0"||isHb == ""){
+				$('input[name="order"]').attr('checked',false);
+				$("input[name='order']").get(0).checked=true;
+				var orderMainCode =  $('input[name="order"]:checked').val();
+				$.ajax({
+					type: "get",
+					url: "/getOrderSupportPayType.jhtm",
+					cache: false,
+					data: { orderMainCode: orderMainCode, plat: plat,lenovoId:lenovoId ,shopId:shopId,terminal:terminal },
+					dataType: "json",
+					success: function (data) {
+						if (data.rc == 0) {
+							$("div.money span.total").html(data.payPortalOrder.totalFee + "元");
+							for(i = 0 ; i<data.orderSupportPayTypeList.length ; i++){
+								if(data.orderSupportPayTypeList[i].payType == 0){
+									$('div#pay_type1_title').show();
+									$('#zs').show();
+								}else if(data.orderSupportPayTypeList[i].payType == 1){
+									$('div#pay_type1_title').show();
+									$('#zhifubao').show();
+                                    if(shopId != 8){
+                                        aliPaySaoMaIframe();
+                                        $("#aliPaySaoMa").show();
+                                    }
+								}else if(data.orderSupportPayTypeList[i].payType == 3){
+                                        $('div#pay_type2_title').show();
+                                        $('div.pay_type2>ul>li').show();
+                                        $('#pay_type2_div ul li:gt(10)').hide();
+                                        $("#pay_type2_div ul li:last").show();
+								}else if(data.orderSupportPayTypeList[i].payType == 7){
+									$('div#pay_type1_title').show();
+									$('#yinlian').show();
+								}else if(data.orderSupportPayTypeList[i].payType == 9){
+									wxSaoMa();
+									$('div#pay_type1_title').show();
+									$('#weixinSaoMaLi').show();
+									$('#weixin').show();
+								}else if(data.orderSupportPayTypeList[i].payType == 10){
+									//农行分期
+                                    $('#ngts').show();
+									var abcFQOrderId =  $('input[name="order"]:checked').val();
+									var abcFQTotal = data.payPortalOrder.totalFee;
+									var abcFQRules = [];
+									for(j = 0 ; j<data.abcfqPayRulesList.length ; j++){
+										var row = {};
+										row.fenQiNum = data.abcfqPayRulesList[j].fqNum;
+										row.fenQiRate = data.abcfqPayRulesList[j].fqRate;
+										abcFQRules.push(row);
+									}
+									var param={
+										orderId:abcFQOrderId,
+										orderAmount:abcFQTotal,
+										payType:"10",
+										fenQiList:abcFQRules
+									};
+									fenqiPayInit(param);
+									$('#pay_type4').show();
+                                    $('#nhfq').show();
+								}else if(data.orderSupportPayTypeList[i].payType==11){
+                                    //花呗分期
+                                    $('#ngts').show();
+                                    var abcFQOrderId =  $('input[name="order"]:checked').val();
+                                    var abcFQTotal = data.payPortalOrder.totalFee;
+                                    var abcFQRules = [];
+                                    for(j = 0 ; j<data.aliHuaBeiFqPayRulesList.length ; j++){
+                                        var row = {};
+                                        row.fenQiNum = data.aliHuaBeiFqPayRulesList[j].fqNum;
+                                        row.fenQiRate = data.aliHuaBeiFqPayRulesList[j].fqRate;
+                                        row.fqRatePro = data.aliHuaBeiFqPayRulesList[j].fqRatePro;
+                                        abcFQRules.push(row);
+                                    }
+                                    abcFQRules.sort(function(a,b){return parseInt(a.fenQiNum) > parseInt(b.fenQiNum)?1:-1});
+                                    var param={
+                                        orderId:abcFQOrderId,
+                                        orderAmount:abcFQTotal,
+                                        payType:"11",
+                                        fenQiList:abcFQRules
+                                    };
+                                    huaBeiFenqiPayInit(param);
+                                    $('#pay_type4').show();
+                                    $('#hbfq').show();
+                                }
+							}
+                            parseAddress($('input[name="order"]:checked '),data.payPortalOrder.orderType,data.payPortalOrder.shopId);//change
+						}else{
+							alert(data.msg);
+						}
+						hidEmpty();
+					}
+				});
+                var orderCode = $('input[name="order"]:checked ').val();
+                var lenovoId = $("#lenovoId").val();
+                var shopId = $("#shopId").val();
+                //getDeliveries(lenovoId,orderCode,shopId);
+			}else{
+				//合并支付逻辑
+				$('input[name="order"]').attr('checked','checked');
+				$('div#pay_type1_title').show();
+				$('div#pay_type1_div ul li').hide();
+				$("#dead_time_p").hide();
+				$('#zhifubao').show();
+                $('#ngts').hide();
+                if(merchantid!='tk'&& merchantid!='smb'){
+                    $('div#pay_type2_title').show();
+                    $('div#pay_type2_div ul li').hide();
+                    $('div.pay_type2>ul>li').show();
+                    $('#pay_type2_div ul li:gt(10)').hide();
+                    $("#pay_type2_div ul li:last").show();
+                    $("#xyState").val('1');
+                    $("#pay_type2_div ul li:last").html('显示更多');
+                }
+				$('#pay_type4').hide();
+				//合并金额
+				var hbAmount = new Number(0);
+				$('input[name="order"]:checked ').each(function(){
+					var orderAmount = $(this).parents('li').find('#amountMoney_hid').val();
+					hbAmount += new Number(orderAmount);
+				})
+				$("div.money span.total").html(hbAmount.toFixed(2) + "元");
+                parseAddress($('input[name="order"]:checked '),"","");
+			}
+			//点击银行，支付平台时显示遮罩
+			$('.pay_plats').delegate('a','click',function(){
+				showMask();
+			});
+			//点击关闭按钮隐藏遮罩
+			$('.popbox .close').click(function(){
+				hideMask();
+                window.location.reload();
+			});
+			$('.address li').hide();
+			//显示隐藏订单详情
+			$('a.show_more').click(function(){
+				var vi = $('.address li:visible').size();
+				if(vi){
+					$('.more').removeClass('top_dashed');
+					$('.address li').hide();
+					$('#em_order_detail').attr("class","down");
+				}else{
+					$('.more').addClass('top_dashed');
+					$('.address li').show();
+					$('#em_order_detail').attr("class","up");
+				}
+			});
+		}else{
+            showMessage(1500, "未找到订单，请重新发起支付", orderList);
+		}
+    });
+		
+    function ClosePayDailog() {
+        window.location.reload(true);
+        window.location.href = href;
+    }
+	
+	var cps = function(){
+		var orderids ='';
+		var plat =  $("input:hidden[id = plat ]").val();
+		var orderid =  $('input[name="order"]');		
+		$('input[name="order"]').each(function(){
+			orderids += $(this).val() +",";
+		});
+		$.ajax({
+			type: "get",
+			url: cpsUrl,
+			dataType : 'jsonp',
+			jsonp:"jsoncallback",
+			data: {plat: plat,ordnos:orderids },
+			success: function (data) {
+
+			}
+		});
+	}
+
+	function getOrderPayType(_this){
+		var orderCheck = $("input[name='order']:checked ").size();
+		if(orderCheck>1){
+			$('#zs').hide();
+			$('#weixin').hide();
+			$("#aliPaySaoMa").hide();
+			$('#weixinSaoMaLi').hide();
+			$('#pay_type4').hide();
+            $('#nhfq').hide();
+            $('#hbfq').hide();
+            $('#pay_type2_div').hide();
+		}
+		var lenovoId =  $("#lenovoId").val();
+		var plat =  $("#plat").val();
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		$('.pay_is_hidden').show();
+		if(orderCheck == 0){
+			$(_this).attr('checked', true);
+			showMessage(1500, "至少选择一个订单","");
+		}else if(orderCheck > 1){
+			//合并支付逻辑
+			$("#wxsmflag").val("0");
+			$('div#pay_type1_title').show();
+			$('div#pay_type1_div ul li').hide();
+			$("#dead_time_p").hide();
+			$('#zhifubao').show();
+            $('#ngts').hide();
+            $('#nhfq').hide();
+            $('#hbfq').hide();
+
+            if(merchantid!='tk' && merchantid!='smb'){
+                $('div#pay_type2_title').show();
+                $('div#pay_type2_div ul li').hide();
+                $('div.pay_type2>ul>li').show();
+                $('#pay_type2_div ul li:gt(10)').hide();
+                $("#pay_type2_div ul li:last").show();
+                $("#xyState").val('1');
+                $("#pay_type2_div ul li:last").html('显示更多');
+            }else{
+                $('#pay_type2_div').hide();
+            }
+			$('#pay_type4').hide();
+			//合并金额
+			var hbAmount = new Number(0);
+			$('input[name="order"]:checked ').each(function(){
+				var orderAmount = $(this).parents('li').find('#amountMoney_hid').val();
+				hbAmount += new Number(orderAmount);
+			})
+			$("div.money span.total").html(hbAmount.toFixed(2) + "元");
+            parseAddress($('input[name="order"]:checked '),"","");//change
+		}else{
+			$("#wxsmflag").val("1");
+			$("#dead_time_p").show();
+			var orderMainCode = $('input[name="order"]:checked ').val();
+			$.ajax({
+				type: "get",
+				url: "/getOrderSupportPayType.jhtm",
+				cache: false,
+				data: { orderMainCode: orderMainCode, plat: plat,lenovoId:lenovoId ,shopId:shopId,terminal:terminal },
+				dataType: "json",
+				success: function (data) {
+					if (data.rc == 0) {
+						$("div.money span.total").html(data.payPortalOrder.totalFee + "元");
+						$('div#pay_type1_title').hide();
+						$('div#pay_type2_title').hide();
+						$('div#pay_type1_div ul li').hide();
+						$('div#pay_type2_div ul li').hide();
+						for(i = 0 ; i<data.orderSupportPayTypeList.length ; i++){
+							//type
+							if(data.orderSupportPayTypeList[i].payType == 0){
+								$('div#pay_type1_title').show();
+								$('#zs').show();
+								/*$('#zfbzs').hide();*/
+							}else if(data.orderSupportPayTypeList[i].payType == 1){
+								$('div#pay_type1_title').show();
+								$('#zhifubao').show();
+                                if(shopId != 8){
+                                    aliPaySaoMaIframe();
+                                    $("#aliPaySaoMa").show();
+                                }
+							}else if(data.orderSupportPayTypeList[i].payType == 3){
+                                    $('div#pay_type2_title').show();
+                                    $('div.pay_type2>ul>li').show();
+                                    $('#pay_type2_div ul li:gt(10)').hide();
+                                    $("#pay_type2_div ul li:last").show();
+                                    $("#xyState").val('1');
+                                    $("#pay_type2_div ul li:last").html('显示更多');
+							}else if(data.orderSupportPayTypeList[i].payType == 7){
+								$('div#pay_type1_title').show();
+								$('#yinlian').show();
+							}else if(data.orderSupportPayTypeList[i].payType == 9){
+								wxSaoMa();
+								$('div#pay_type1_title').show();
+								$('#weixinSaoMaLi').show();
+								$('#weixin').show();
+                            }else if(data.orderSupportPayTypeList[i].payType == 10){
+                                //农行分期
+                                $('#ngts').show();
+                                var abcFQOrderId =  $('input[name="order"]:checked').val();
+                                var abcFQTotal = data.payPortalOrder.totalFee;
+                                var abcFQRules = [];
+                                for(j = 0 ; j<data.abcfqPayRulesList.length ; j++){
+                                    var row = {};
+                                    row.fenQiNum = data.abcfqPayRulesList[j].fqNum;
+                                    row.fenQiRate = data.abcfqPayRulesList[j].fqRate;
+                                    abcFQRules.push(row);
+                                }
+                                var param={
+                                    orderId:abcFQOrderId,
+                                    orderAmount:abcFQTotal,
+                                    payType:"10",
+                                    fenQiList:abcFQRules
+                                };
+                                fenqiPayInit(param);
+                                $('#pay_type4').show();
+                                $('#nhfq').show();
+                            }else if(data.orderSupportPayTypeList[i].payType==11){
+                                //花呗分期
+                                $('#ngts').show();
+                                var abcFQOrderId =  $('input[name="order"]:checked').val();
+                                var abcFQTotal = data.payPortalOrder.totalFee;
+                                var abcFQRules = [];
+                                for(j = 0 ; j<data.aliHuaBeiFqPayRulesList.length ; j++){
+                                    var row = {};
+                                    row.fenQiNum = data.aliHuaBeiFqPayRulesList[j].fqNum;
+                                    row.fenQiRate = data.aliHuaBeiFqPayRulesList[j].fqRate;
+                                    row.fqRatePro = data.aliHuaBeiFqPayRulesList[j].fqRatePro;
+                                    abcFQRules.push(row);
+                                }
+                                abcFQRules.sort(function(a,b){return parseInt(a.fenQiNum) > parseInt(b.fenQiNum)?1:-1});
+                                var param={
+                                    orderId:abcFQOrderId,
+                                    orderAmount:abcFQTotal,
+                                    payType:"11",
+                                    fenQiList:abcFQRules
+                                };
+                                huaBeiFenqiPayInit(param);
+                                $('#pay_type4').show();
+                                $('#hbfq').show();
+                            }
+                        }
+                        parseAddress($('input[name="order"]:checked '),data.payPortalOrder.orderType,data.payPortalOrder.shopId);//change
+					} else {
+						showMessage(1500, data.msg,"");
+					}
+					hidEmpty();
+				}
+			})
+		}
+
+
+        var orderCode = $('input[name="order"]:checked ').val();
+        var lenovoId = $("#lenovoId").val();
+        var shopId = $("#shopId").val();
+        //getDeliveries(lenovoId,orderCode,shopId);
+
+	}
+	
+	//显示通知信息
+	function showMessage(time, text, url) {
+		if($('.alert').length){
+			$('.alert').remove();
+		}
+		var newdiv = $("<div class='alert'></div>");
+		var div_html = '';
+		div_html += '<div class="alert_body">';
+		div_html += '<img src="/images/information.png" />&nbsp;&nbsp;';
+		div_html += '<span>' + text + '</span>';
+		div_html += '</div>';
+		newdiv.append(div_html);
+		$('body').append(newdiv);
+		var alert_w = newdiv.width();
+		newdiv.fadeIn();
+		newdiv.css({ "margin-left": -alert_w / 2 });
+		setTimeout(function () {
+			newdiv.fadeOut(function () { newdiv.remove(); });
+			if (url) {
+				window.location.href = url;
+			}
+		}, time);
+	}
+	//解析地址
+	function parseAddress($input,orderType,shopId){
+		$("#address").children().remove();
+        $("#ledou_span").hide();
+		if($input.size() == 1){
+			var div_html = '';
+            if(orderType=="13"){
+                div_html += '<li>收款方信息：此物品是联想正品 <span></span></li>';
+            }else{
+                div_html += '<li>收货信息：<span></span></li>';
+                div_html += '<li>收款方信息：此物品是联想正品 <span></span></li>';
+                div_html += '<li>发票信息：<span></span></li>';
+                if(shopId == "8"){
+                    div_html += '<li>发票寄送信息：<span></span></li>';
+                }
+            }
+
+			$(".address").append(div_html);
+			var $parent = $input.parents('li');
+			var deliver = $parent.find('.deliver_hid').text();
+            var vatDeliver = $parent.find('.vatDeliver_hid').text();
+			var receiver = $parent.find('.receiver_hid').text();
+			var invoice = $parent.find('.invoice_hid').text();
+			var dead_time = $parent.find('.dead_time_hid').text();
+            var ledou_num = $parent.find('.ledou_num_hid').text();
+			var persist_time = $parent.find('.persist_time_hid').text();
+            var order_show_msg = $parent.find('.show_msg_hid').text();
+			var address = $('.address');
+            if(orderType=="13"){
+                address.find('li:eq(0) span').text(receiver);
+            }else{
+                address.find('li:eq(0) span').text(deliver);
+                address.find('li:eq(1) span').text(receiver);
+                address.find('li:eq(2) span').text(invoice);
+                if(shopId == "8"){
+                    address.find('li:eq(3) span').text(vatDeliver);
+                }
+            }
+
+			$('#dead_time').text(dead_time);
+			$('#persist_time').text(persist_time);
+            if(order_show_msg != ""){
+                $("#order_show_msg_p").text(order_show_msg);
+                $("#dead_time_p").hide();
+                $("#order_show_msg_p").show();
+            }
+            if(ledou_num == 0){
+                $("#ledou_span").hide();
+            }else{
+                $("#ledou_span").show();
+            }
+		}else{
+			var div_html = '';
+			$('input[name="order"]:checked ').each(function(){
+                var ledou_num = $(this).parents('li').find('.ledou_num_hid').text();
+                if(ledou_num != 0){
+                    $("#ledou_span").show();
+                }
+				var hbOrderMeg = "<li><span>" + $(this).parents('li').find('#hbOrderMeg_hid').val() + "</span></li>";
+				div_html += hbOrderMeg;
+			})
+            if(merchantid=='tk'){
+                div_html += "<li><span>" + "温馨提示：多单合并支付只能通过支付宝方式支付" + "</span></li>";
+            }
+			$("#address").append(div_html);
+		}
+		if($('#em_order_detail').attr("class")=="down"){
+			$('.address li').hide();
+		}else if($('#em_order_detail').attr("class")=="up"){
+			$('.address li').show();
+		}
+	}
+	
+	//如果子元素都隐藏，则父元素隐藏
+	function hidEmpty(){
+		$('.pay_is_hidden').each(function(){
+			var visibleSize = $(this).find('.pay_plats li:visible').size();
+			if(!visibleSize){
+				$(this).hide();
+			}else{
+				$(this).show();
+			}
+		});
+	}
+
+	//显示蒙板
+	function showMask(){
+		$('.popbox,.mask').show();
+	}
+	
+	//隐藏蒙板
+	function hideMask(){
+		$('.popbox,.mask').hide();
+	}
+	//支付宝业务
+	function payzfb(directbank){
+		var orderCheck = $("input[name='order']:checked ").size();
+		var lenovoId =  $("#lenovoId").val();
+        //添加shopId,terminal
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		if(orderCheck == 1){
+			var orderMainCode =  $('input[name="order"]:checked ').val();
+			if(directbank==null){
+				SetCookie("userPayMethod", lenovoId+","+""+","+1);
+				window.open("/alipay/pc/"+merchantid+"_gotobank.html?orderMainCode=" + orderMainCode + "&paymentTypeCode=" + "1" + "&shopId=" + shopId + "&terminal=" + terminal);
+			}else{
+				SetCookie("userPayMethod", lenovoId+","+directbank+","+3);
+				window.open("/alipay/pc/"+merchantid+"_gotobank.html?orderMainCode=" + orderMainCode + "&paymentTypeCode=" + "3" + "&directbank=" + directbank + "&shopId=" + shopId + "&terminal=" + terminal);
+			}
+		}else if(orderCheck > 1){
+			var orderMainCode = "";
+			$('input[name="order"]:checked ').each(function(){
+                orderMainCode += $(this).val() + ",";
+			})
+			//如果获取到
+			if(orderMainCode.length > 0) {
+                orderMainCode = orderMainCode.substring(0, orderMainCode.length - 1); //把最后一个逗号去掉
+				if(directbank==null){
+					SetCookie("userPayMethod", lenovoId+","+""+","+4);
+					window.open("/alipay/pc/"+merchantid+"_gotobank.html?orderMainCode=" + orderMainCode + "&paymentTypeCode=" + "4" + "&shopId=" + shopId + "&terminal=" + terminal);
+				}else{
+					SetCookie("userPayMethod", lenovoId+","+directbank+","+4);
+					window.open("/alipay/pc/"+merchantid+"_gotobank.html?orderMainCode=" + orderMainCode + "&paymentTypeCode=" + "4" + "&directbank=" + directbank + "&shopId=" + shopId + "&terminal=" + terminal);
+				}
+			}else{
+				showMessage(1500, "支付处理异常，请重新发起","");
+			}
+		}else{
+			showMessage(1500, "至少选择一个订单","");
+		}
+	}
+
+//蚂蚁花呗分期支付
+function payHuaBei() {
+    var urlText = $("#hbFenqi-pay-button").attr("url-data");
+    if (urlText == "" || urlText == null) {
+    } else {
+        showMask();
+        SetCookie("userPayMethod", lenovoId + "," + "" + "," + 11);
+        window.open("/alipay/pc/" + merchantid + "_gotobank.html?" + urlText);
+    }
+}
+	
+	//招商业务
+	function payzs(){
+		var orderMainCode =  $('input[name="order"]:checked ').val();
+		var lenovoId =  $("#lenovoId").val();
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		SetCookie("userPayMethod", lenovoId+","+""+","+0);
+		window.open("/alipay/pc/"+merchantid+"_gotobank.html?orderMainCode=" + orderMainCode + "&paymentTypeCode=" + "0"+ "&shopId=" + shopId + "&terminal=" + terminal);
+	}
+	//银联业务
+	function payyl(){
+		var orderMainCode =  $('input[name="order"]:checked ').val();
+		var lenovoId =  $("#lenovoId").val();
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		SetCookie("userPayMethod", lenovoId+","+""+","+7);
+		window.open("/alipay/pc/"+merchantid+"_gotobank.html?orderMainCode=" + orderMainCode + "&paymentTypeCode=" + "7"+ "&shopId=" + shopId + "&terminal=" + terminal);
+	}
+	
+	//微信业务
+	function paywx(){
+		var plat =  $("#plat").val();
+		var lenovoId =  $("#lenovoId").val();
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		var orderMainCode =  $('input[name="order"]:checked ').val();
+		SetCookie("userPayMethod", lenovoId+","+""+","+9);
+		$.ajax({
+			type: "get",
+			url: "/pay.jhtm",
+			data: { plat: plat, orderMainCode: orderMainCode, merchantCode:merchantid, os: plat, paymentTypeCode: 9, lenovoId: lenovoId ,shopId:shopId,terminal:terminal},
+			dataType: "jsonp",
+			success: function (data) {
+				/*调用生成二维码*/
+				showMsg();
+				SetCodeButton("imgspan", data.msg);
+				$("#imgspan").css({ "border": "1px #c0c0c0 solid", "padding": "5px" });
+				$("#imgspan img").css({ "margin": "0 auto", "float": "left" });
+				getOrderStatus(0);
+				var   mybrowser =  getBrowserInfo()
+				if(mybrowser.b == "msie" && mybrowser.i == "8.0"){
+					$("#divcoverhtml_pcid").find("table").css({"margin-left":0,"width":"100%"})
+				}
+			},
+			error: function () {
+				showMessage(1000, "请刷新页面","");
+				window.location.reload();
+			}
+		});
+	}
+	
+	//微信扫描业务
+	//51281   think waop 5 pc 8
+	function wxSaoMa(){
+		var plat =  $("#plat").val();
+		var lenovoId =  $("#lenovoId").val();
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		var orderMainCode =  $('input[name="order"]:checked ').val();
+		//SetCookie("userPayMethod", lenovoId+","+""+","+9);
+		$.ajax({
+			type: "get",
+			url: "/pay.jhtm",
+			data: { plat: plat, orderMainCode: orderMainCode, merchantCode:merchantid, os: plat, paymentTypeCode: 9, lenovoId: lenovoId  ,shopId:shopId,terminal:terminal},
+			dataType: "jsonp",
+			success: function (data) {
+				/*调用生成二维码*/
+				SetCode("weixinSaoMa", data.msg);
+				getOrderStatus(0);
+			},
+			error: function () {
+				showMessage(1000, "请刷新页面","");
+				window.location.reload();
+
+			}
+		});
+	}
+	
+	/*
+	imgid:用来显示二维码的容器
+	msginfo:加密的内容
+	*/
+	function SetCodeButton(imgid, msginfo) {
+		/*//{"rc":0,"msg":"weixin:pay/bizpayurl?pr=zJreZcF"}; */
+		var imgspan = document.getElementById(imgid);
+		imgspan.innerHTML = "";
+		var qrcode = new QRCode(imgspan, {
+			width: 280,//设置宽高
+			height: 280
+		});
+		qrcode.makeCode(msginfo);
+	}
+	
+	/*遮罩层显示lyfadd*/
+	function showMsg() {
+		var pc_coverhtml = '';
+		pc_coverhtml += '<div id="divcoverhtml_pcid" >';
+		pc_coverhtml += '    <div class="grep123 mask"></div>';
+		pc_coverhtml += '    <div class="selectbox" style="width:400px; height:430px;margin-top:-250px;">';
+		pc_coverhtml += '      <div style="text-align:right;padding-right:10px;font-size:14px; font-family:宋体;"><a onclick=' + 'javascript:CloseCode();' + ' style="cursor:pointer;">关闭</a></div> ';
+		pc_coverhtml += '        <div class="box_btm"  style="margin:0px; padding:5px; margin-top:15px;">';
+		pc_coverhtml += '<div id="imgspan" style="width:302px;height:285px;margin:0 auto;"></div>';
+		pc_coverhtml += '<div  style="margin-top:5px;padding-left:10px; width:312px;text-align:left;margin:0 auto;background-color:#ff7674;height:50px;font-size:14px; color:white;"><span  ><img src="/images/icon-red.png" style="margin-top:2px;"></span><span >请使用微信扫一扫</br>扫描二维码支付</span></div>';
+		pc_coverhtml += '    </div>';
+		pc_coverhtml += '</div>';
+		pc_coverhtml += '</div>';
+		//$('body').append(pc_coverhtml);
+		$('#code_box').html(pc_coverhtml);
+	}
+	
+	//微信扫码关闭
+	function CloseCode() {
+		$("#divcoverhtml_pcid").remove();
+		window.location.reload();
+	}
+	
+	/*
+	imgid:用来显示二维码的容器
+	msginfo:加密的内容
+	*/
+	function SetCode(imgid, msginfo) {
+		var imgspan = document.getElementById(imgid);
+		imgspan.innerHTML = "";
+		var qrcode = new QRCode(imgspan, {
+			width: 85,//设置宽高
+			height: 85
+		});
+		qrcode.makeCode(msginfo);
+	}
+
+	function getOrderStatus(i) {
+		var url = "/getOrderStatus.jhtm";
+		var lenovoId = $("#lenovoId").val();
+		var plat = $("#plat").val();
+        var shopId = $("#shopId").val();
+        var terminal = $("#terminal").val();
+		var orderMainCode =  $('input[name="order"]:checked ').val();
+		var wxsmflag = $('#wxsmflag').val();
+		var wxreturn = weixinurl+"?orderMainCode="+orderMainCode +"&lenovoId="+lenovoId + "&plat="+plat +"&os="+plat+"&shopId="+shopId+"&terminal="+terminal;
+		i = i || 0;
+		$.ajax({
+			type: "get",
+			url: url,
+			data: { orderMainCode: orderMainCode, os: plat, lenovoId: lenovoId, merchantCode: merchantid ,shopId:shopId,terminal:terminal},
+			dataType: "jsonp",
+			success: function (data) {
+				if (data.rc == 0 && data.msg == 1) {
+					showMessage(1500, "扫码成功！", wxreturn);
+				} else if (i >= 120) {
+                    showMessage(1500, "支付超时！请重新支付", orderList);
+				} else if(wxsmflag == 0){
+
+				} else{
+					i++;
+					setTimeout(function () {
+						getOrderStatus(i);
+					}, 2000)
+				}
+			}
+		})
+	}
+
+	function goOrderInfo(){
+//		var orderCheck = $("input[name='order']:checked ").size();
+//		if(orderCheck == 1){
+//            var $input = $('input[name="order"]:checked ');
+//            var orderMainCode =  $('input[name="order"]:checked ').val();
+//            var $parent = $input.parents('li');
+//            var passkey = $parent.find('.passkey_hid').text();
+//            if(merchantid=="b2c"){
+//                var orderAddType = $parent.find('.orderAddType_hid').text();
+//                if(orderAddType == 11){
+//                    location.href = zcOrderDetail + orderMainCode + "&passkey=" + passkey;
+//                }else{
+//                    location.href = orderDetail + orderMainCode + "&passkey=" + passkey;
+//                }
+//            }else{
+//                location.href = orderDetail + orderMainCode + "&passkey=" + passkey;
+//            }
+//		}else{
+//            location.href = orderList;
+//		}
+        var orderCheck = $("input[name='order']:checked ").size();
+        if(orderCheck == 1){
+            var $input = $('input[name="order"]:checked ');
+            var $parent = $input.parents('li');
+            if(merchantid=="b2c"){
+                var orderAddType = $parent.find('.orderAddType_hid').text();
+                if(orderAddType == 11){
+                    location.href = zcOrderList;
+                }else{
+                    location.href = orderList;
+                }
+            }else{
+                location.href = orderList;
+            }
+        }else{
+            location.href = orderList;
+        }
+	}
+
+    /*支付异常**/
+	function payQuestion() {
+		location.href = "/alipay/pc/"+merchantid+"_pq.html";
+	}
+    function smbPayQuestion() {
+        location.href = "http://17shop.lenovo.com.cn/help/wenti.aspx";
+    }
+	//TODO 需要判断来源，跳回相应的地址
+    /*$(function(){
+        if(!passport.isLogin()){
+            location.href = localhostPath;
+        }else{
+			//初始化passport
+			passport.init({
+				ticket:'e1176c13-1f8a-480f-a751-3f874df82249',
+                *//*logout:function(){
+                    location.href = localhostPath;
+                },*//*
+                logoutRedirect:localhostPath,
+				drawUserInfo:function(){
+					$('.username').html(passport.cookie.loginName);
+				}
+			})
+			//退出
+			$('.logout').click(function(){
+				passport.doLogout();
+			})
+	    }
+    })*/
+	
+	/**
+	 *隐藏支付宝扫码支付的二维码加载框函数
+	 *  hiddenAliSaoMaIframe()
+	 * 在iframe加载的子页面中调用，
+	 * 当订单已支付或有问题时，进行调用。
+	 */
+	var hiddenAliSaoMaIframe=function(){
+		jQuery("#aliPaySaoMa").hide();
+
+	};
+	
+	function getOrderStatusZfb(i) {
+		var url = "/getOrderStatus.jhtm";
+		var lenovoId = $("#lenovoId").val();
+		var plat = $("#plat").val();
+		var orderMainCode =  $('input[name="order"]:checked ').val();
+		var wxreturn = weixinurl+"?orderMainCode="+orderMainCode +"&lenovoId="+lenovoId + "&plat="+plat +"&os="+plat;
+		i = i || 0;
+		$.ajax({
+			type: "get",
+			url: url,
+			data: { orderMainCode: orderMainCode, os: plat, lenovoId: lenovoId, merchantCode: merchantid },
+			dataType: "jsonp",
+			success: function (data) {
+				if (data.rc == 0 && data.msg == 1) {
+					showMessage(1500,"扫码成功！", wxreturn);
+				} else if (i >= 120) {
+					showMessage(1500, "支付超时！请重新支付", orderList);
+				} else {
+					i++;
+					setTimeout(function () {
+						getOrderStatus(i);
+					}, 2000)
+				}
+			}
+		})
+	}
+

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- saved from url=(0093)https://excashier.alipay.com/standard/auth.htm?payOrderId=db3661d923ec4347a527d7111f036b5c.80 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>支付宝 - 网上支付 安全快速！</title>
+    <link rel="icon" href="https://i.alipayobjects.com/common/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://i.alipayobjects.com/common/favicon/favicon.ico" type="image/x-icon">
+    <link href="https://a.alipayobjects.com/" rel="dns-prefetch">
+<link href="https://app.alipay.com/" rel="dns-prefetch">
+<link href="https://my.alipay.com/" rel="dns-prefetch">
+<link href="https://lab.alipay.com/" rel="dns-prefetch">
+<link href="https://cashier.alipay.com/" rel="dns-prefetch">
+<link href="https://financeprod.alipay.com/" rel="dns-prefetch">
+<link href="https://shenghuo.alipay.com/" rel="dns-prefetch">
+
+
+<!-- uitpl:/component/trackerTime.vm -->
+    <!-- CMS:全站公共 cms/tracker/iconfont.vm开始:tracker/iconfont.vm --><style>
+@font-face {
+    font-family: "rei";
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20150616"); /* IE9 */
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20150616#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("https://i.alipayobjects.com/common/fonts/rei.woff?20150616") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.ttf?20150616")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.svg?20150616#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+    font-family:"rei";
+    font-style: normal;
+    font-weight: normal;
+    cursor: default;
+    -webkit-font-smoothing: antialiased;
+}
+</style>
+<!-- CMS:全站公共 cms/tracker/iconfont.vm结束:tracker/iconfont.vm -->
+<script type="text/javascript">
+  window._to = { start: new Date() };
+</script>
+
+<!-- CMS:全站公共 cms/tracker/monitor.vm开始:tracker/monitor.vm --><!-- FD:106:alipay/tracker/sai_seer.vm:START --><script type="text/javascript">
+
+!function(n){function o(r){if(t[r])return t[r].exports;var i=t[r]={exports:{},id:r,loaded:!1};return n[r].call(i.exports,i,i.exports,o),i.loaded=!0,i.exports}var t={};return o.m=n,o.c=t,o.p="",o(0)}([function(n,o){"use strict";window.Sai={log:function(){},error:function(){},lost:function(){},off:function(){},on:function(){},_DATAS:[],_EVENTS:[]}}]);
+
+</script>
+<!-- FD:106:alipay/tracker/sai_seer.vm:END --><!-- CMS:全站公共 cms/tracker/monitor.vm结束:tracker/monitor.vm -->
+<!-- CMS:全站公共 cms/tracker/seajs.vm开始:tracker/seajs.vm -->	
+
+<!-- monitor 防错代码 -->
+<script>
+(function(win){
+  if(!win.monitor){win.monitor = {};}
+
+  var METHODS = ["lost", "log", "error", "on", "off"];
+
+  for(var i=0,method,l=METHODS.length; i<l; i++){
+    method = METHODS[i];
+    if("function" !== typeof win.monitor[method]){
+      win.monitor[method] = function(){};
+    }
+  }
+})(window);
+</script>
+
+<!-- seajs以及插件 -->
+<script charset="utf-8" crossorigin="anonymous" id="seajsnode" onerror="window.monitor &amp;&amp; monitor.lost &amp;&amp; monitor.lost(this.src)" src="./saved_resource(1)"></script>
+
+<!-- seajs config 配置 -->
+<script>
+seajs.config({
+  alias: {
+    '$': 'jquery/jquery/1.7.2/jquery',
+    '$-debug': 'jquery/jquery/1.7.2/jquery',
+    'jquery': 'jquery/jquery/1.7.2/jquery',
+    'jquery-debug': 'jquery/jquery/1.7.2/jquery-debug',
+    'seajs-debug': 'seajs/seajs-debug/1.1.1/seajs-debug'
+  },
+  crossorigin: function(uri){
+  
+    function typeOf(type){
+	  return function(object){
+	    return Object.prototype.toString.call(object) === '[object ' + type + ']';
+	  }
+	}
+	var isString = typeOf("String");
+	var isRegExp = typeOf("RegExp");
+    
+	var whitelist = [];
+	
+                  whitelist.push('https://a.alipayobjects.com/');
+          	
+	for (var i=0, rule, l=whitelist.length; i<l; i++){
+	  rule = whitelist[i];
+	  if (
+	    (isString(rule) && uri.indexOf(rule) === 0) ||
+	    (isRegExp(rule) && rule.test(uri))
+		) {
+		
+	    return "anonymous";
+	  }
+	}
+  },
+  vars: {
+    locale: 'zh-cn'
+  }
+});
+</script>
+
+<!-- 兼容原有的 plugin-i18n 写法 -->
+<!-- https://github.com/seajs/seajs/blob/1.3.1/src/plugins/plugin-i18n.js -->
+<script>
+seajs.pluginSDK = seajs.pluginSDK || {
+  Module: {
+    _resolve: function() {}
+  },
+  config: {
+    locale: ''
+  }
+};
+// 干掉载入 plugin-i18n.js，避免 404
+seajs.config({
+  map: [
+	[/^.*\/seajs\/plugin-i18n\.js$/, ''],
+	[/^.*\i18n!lang\.js$/, '']
+  ] 
+});
+</script>
+
+<!-- 路由旧 ID，解决 seajs.use('select/x.x.x/select') 的历史遗留问题 -->
+<script>
+(function(){
+
+var JQ = '/jquery/1.7.2/jquery.js';
+seajs.cache['https://a.alipayobjects.com:443/gallery' + JQ] = seajs.cache['https://a.alipayobjects.com:443/jquery' + JQ];
+
+var GALLERY_MODULES = [
+  'async','backbone','coffee','cookie','es5-safe','handlebars','iscroll',
+  'jasmine','jasmine-jquery','jquery','jquery-color','json','keymaster',
+  'labjs','less','marked','moment','mustache','querystring','raphael',
+  'socketio','store','swfobject','underscore','zepto','ztree'
+];
+
+var ARALE_MODULES = [
+  'autocomplete','base','calendar','class','cookie','dialog','easing',
+  'events','iframe-uploader','iframe-shim','messenger','overlay','popup',
+  'position','select','switchable','tip','validator','widget'
+];
+
+var util = {};
+util.indexOf = Array.prototype.indexOf ?
+  function(arr, item) {
+    return arr.indexOf(item);
+  } :
+  function(arr, item) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === item) {
+        return i;
+      }
+    }
+    return -1;
+  };
+util.map = Array.prototype.map ?
+  function(arr, fn) {
+    return arr.map(fn);
+  } :
+  function(arr, fn) {
+    var ret = [];
+	for (var i = 0; i < arr.length; i++) {
+        ret.push(fn(arr[i], i, arr));
+    }
+    return ret;
+  };
+
+function contains(arr, item) {
+  return util.indexOf(arr, item) > -1
+}
+
+function map(id) {
+  id = id.replace('#', '');
+
+  var parts = id.split('/');
+  var len = parts.length;
+  var root, name;
+
+  // id = root/name/x.y.z/name
+  if (len === 4) {
+    root = parts[0];
+    name = parts[1];
+
+    // gallery 或 alipay 开头的没有问题
+    if (root === 'alipay' || root === 'gallery') {
+      return id;
+    }
+
+    // arale 开头的
+    if (root === 'arale') {
+      // 处理 arale/handlebars 的情况
+      if (contains(GALLERY_MODULES, name)) {
+        return id.replace('arale/', 'gallery/');
+      } else {
+        return id;
+      }
+    }
+  }
+  // id = name/x.y.z/name
+  else if (len === 3) {
+    name = parts[0]
+
+    // 开头在 GALLERY_MODULES 或 ARALE_MODULES
+    if (contains(GALLERY_MODULES, name)) {
+      return 'gallery/' + id;
+    } else if (contains(ARALE_MODULES, name)) {
+      return 'arale/' + id;
+    }
+  }
+
+  return id;
+}
+
+var _use = seajs.use;
+
+seajs.use = function(ids, callback) {
+  if (typeof ids === 'string') {
+    ids = [ids];
+  }
+
+  ids = util.map(ids, function(id) {
+    return map(id);
+  });
+
+  return _use(ids, callback);
+}
+
+})();
+</script><!-- CMS:全站公共 cms/tracker/seajs.vm结束:tracker/seajs.vm -->
+<!-- FD:106:alipay/tracker/tracker_time.vm:START --><!-- FD:106:alipay/tracker/tracker_time.vm:784:tracker_time.schema:全站 tracker 开关:START --><script charset="utf-8" crossorigin="crossorigin" src="./alipay.light.base-1.8.js.下载"></script>
+
+
+<script type="text/javascript">
+if (!window._to) {
+  window._to = { start: new Date() };
+}
+</script>
+
+<script charset="utf-8" src="./saved_resource(2)"></script>
+
+
+
+<script>
+  window.Tracker && Tracker.start && Tracker.start();
+</script>
+
+
+
+
+
+
+
+<!-- FD:106:alipay/tracker/tracker_time.vm:784:tracker_time.schema:全站 tracker 开关:END -->
+<!-- FD:106:alipay/tracker/tracker_time.vm:END -->    <link charset="utf-8" rel="stylesheet" href="./front-qrcode.css" media="all">
+
+    <style>
+    
+    </style>
+    <!-- CMS:外部商户匿名收银台cms/日志入口/全局日志入口开始:excashier/globalLog/log.vm -->  <style>body #onlineService{display:none}</style><script>var fixInterval = setInterval(function(){if(window.switcher){document.body.style.minWidth = '990px';clearInterval(fixInterval);}},100);window.qrPayloopInterval=3000;window.qrPayloopInterval_5=3000;window.qrPayloopInterval_10=3000;</script><!-- CMS:外部商户匿名收银台cms/日志入口/全局日志入口结束:excashier/globalLog/log.vm --><style>.ibox{position:absolute;display:none;background-color:rgba(0,0,0,.5);border:0;FILTER:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#88000000, endColorstr=#88000000);padding:6px}:root .ibox{FILTER:none\9}.ibox-close{color:#999;cursor:pointer;display:block;font-family:tahoma;font-size:24px;font-weight:700;height:18px;line-height:14px;position:absolute;right:16px;text-decoration:none;top:16px;z-index:10}.ibox-close:hover{color:#666;text-shadow:0 0 2px #aaa}.ibox-title{height:45px;font-size:16px;font-family:\5FAE\8F6F\96C5\9ED1,\9ED1\4F53,\5B8B\4F53;font-weight:700;line-height:46px;border-bottom:1px solid #E1E1E1;color:#4d4d4d;text-indent:20px;background:-webkit-gradient(linear,left top,left bottom,from(#fcfcfc),to(#f9f9f9));background:-moz-linear-gradient(top,#fcfcfc,#f9f9f9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcfcfc", endColorstr="#f9f9f9");background:-o-linear-gradient(top,#fcfcfc,#f9f9f9);background:linear-gradient(top,#fcfcfc,#f9f9f9)}.arale-tip-1_2_2 .ui-poptip{color:#DB7C22;z-index:101;font-size:12px;line-height:1.5;zoom:1}.arale-tip-1_2_2 .ui-poptip-shadow{background-color:rgba(229,169,107,.15);FILTER:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#26e5a96b, endColorstr=#26e5a96b);border-radius:2px;padding:2px;zoom:1;_display:inline}.arale-tip-1_2_2 .ui-poptip-container{position:relative;background-color:#FFFCEF;border:1px solid #ffbb76;border-radius:2px;padding:5px 15px;zoom:1;_display:inline}.arale-tip-1_2_2 .ui-poptip:after,.arale-tip-1_2_2 .ui-poptip-shadow:after,.arale-tip-1_2_2 .ui-poptip-container:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}.arale-tip-1_2_2 a.ui-poptip-close{position:absolute;right:3px;top:3px;border:1px solid #ffc891;text-decoration:none;border-radius:3px;width:12px;height:12px;font-family:tahoma;color:#dd7e00;line-height:10px;*line-height:12px;text-align:center;font-size:14px;background:#ffd7af;background:-webkit-gradient(linear,left top,left bottom,from(#FFF0E1),to(#FFE7CD));background:-moz-linear-gradient(top,#FFF0E1,#FFE7CD);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0E1', endColorstr='#FFE7CD');background:-o-linear-gradient(top,#FFF0E1,#FFE7CD);background:linear-gradient(top,#FFF0E1,#FFE7CD);overflow:hidden}.arale-tip-1_2_2 a.ui-poptip-close:hover{border:1px solid #ffb24c;text-decoration:none;color:#dd7e00;background:#ffd7af;background:-webkit-gradient(linear,left top,left bottom,from(#FFE5CA),to(#FFCC98));background:-moz-linear-gradient(top,#FFE5CA,#FFCC98);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE5CA', endColorstr='#FFCC98');background:-o-linear-gradient(top,#FFE5CA,#FFCC98);background:linear-gradient(top,#FFE5CA,#FFCC98)}.arale-tip-1_2_2 .ui-poptip-arrow{position:absolute;z-index:10;*zoom:1}.arale-tip-1_2_2 .ui-poptip-arrow em,.arale-tip-1_2_2 .ui-poptip-arrow span{position:absolute;*zoom:1;width:0;height:0;border-color:rgba(255,255,255,0);border-color:transparent\0;*border-color:transparent;_border-color:tomato;_filter:chroma(color=tomato);border-style:solid;overflow:hidden;top:0;left:0}.arale-tip-1_2_2 .ui-poptip-arrow-10{left:-6px;top:10px}.arale-tip-1_2_2 .ui-poptip-arrow-10 em{top:0;left:-1px;border-right-color:#ffbb76;border-width:6px 6px 6px 0}.arale-tip-1_2_2 .ui-poptip-arrow-10 span{border-right-color:#FFFCEF;border-width:6px 6px 6px 0}.arale-tip-1_2_2 .ui-poptip-arrow-9{left:-6px;top:50%}.arale-tip-1_2_2 .ui-poptip-arrow-9 em{top:-6px;left:-1px;border-right-color:#ffbb76;border-width:6px 6px 6px 0}.arale-tip-1_2_2 .ui-poptip-arrow-9 span{top:-6px;border-right-color:#FFFCEF;border-width:6px 6px 6px 0}.arale-tip-1_2_2 .ui-poptip-arrow-2{top:10px;right:0}.arale-tip-1_2_2 .ui-poptip-arrow-2 em{top:0;left:1px;border-left-color:#ffbb76;border-width:6px 0 6px 6px}.arale-tip-1_2_2 .ui-poptip-arrow-2 span{border-left-color:#FFFCEF;border-width:6px 0 6px 6px}.arale-tip-1_2_2 .ui-poptip-arrow-3{top:50%;right:0}.arale-tip-1_2_2 .ui-poptip-arrow-3 em{top:-6px;left:1px;border-left-color:#ffbb76;border-width:6px 0 6px 6px}.arale-tip-1_2_2 .ui-poptip-arrow-3 span{top:-6px;border-left-color:#FFFCEF;border-width:6px 0 6px 6px}.arale-tip-1_2_2 .ui-poptip-arrow-11 em,.arale-tip-1_2_2 .ui-poptip-arrow-12 em,.arale-tip-1_2_2 .ui-poptip-arrow-1 em{border-width:0 6px 6px;border-bottom-color:#ffbb76;top:-1px;left:0}.arale-tip-1_2_2 .ui-poptip-arrow-11 span,.arale-tip-1_2_2 .ui-poptip-arrow-12 span,.arale-tip-1_2_2 .ui-poptip-arrow-1 span{border-width:0 6px 6px;border-bottom-color:#FFFCEF}.arale-tip-1_2_2 .ui-poptip-arrow-11{left:14px;top:-6px}.arale-tip-1_2_2 .ui-poptip-arrow-1{right:28px;top:-6px}.arale-tip-1_2_2 .ui-poptip-arrow-12{left:50%;top:-6px}.arale-tip-1_2_2 .ui-poptip-arrow-12 em,.arale-tip-1_2_2 .ui-poptip-arrow-12 span{left:-6px}.arale-tip-1_2_2 .ui-poptip-arrow-5 em,.arale-tip-1_2_2 .ui-poptip-arrow-6 em,.arale-tip-1_2_2 .ui-poptip-arrow-7 em{border-width:6px 6px 0;border-top-color:#ffbb76;top:1px;left:0}.arale-tip-1_2_2 .ui-poptip-arrow-5 span,.arale-tip-1_2_2 .ui-poptip-arrow-6 span,.arale-tip-1_2_2 .ui-poptip-arrow-7 span{border-width:6px 6px 0;border-top-color:#FFFCEF}.arale-tip-1_2_2 .ui-poptip-arrow-5{right:28px;bottom:0}.arale-tip-1_2_2 .ui-poptip-arrow-6{left:50%;bottom:0}.arale-tip-1_2_2 .ui-poptip-arrow-7{left:14px;bottom:0}.arale-tip-1_2_2 .ui-poptip-arrow-6 em,.arale-tip-1_2_2 .ui-poptip-arrow-6 span{left:-6px}:root .arale-tip-1_2_2 .ui-poptip-shadow{FILTER:none\9}.arale-tip-1_2_2 .ui-poptip-blue{color:#4d4d4d}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-shadow{background-color:rgba(0,0,0,.05);FILTER:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#0c000000, endColorstr=#0c000000)}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-container{background-color:#F8FCFF;border:1px solid #B9C8D3}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-10 em,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-9 em{border-right-color:#B9C8D3}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-11 em,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-12 em,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-1 em{border-bottom-color:#B9C8D3}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-2 em,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-3 em{border-left-color:#B9C8D3}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-5 em,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-6 em,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-7 em{border-top-color:#B9C8D3}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-10 span,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-9 span{border-right-color:#F8FCFF}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-11 span,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-12 span,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-1 span{border-bottom-color:#F8FCFF}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-2 span,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-3 span{border-left-color:#F8FCFF}.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-5 span,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-6 span,.arale-tip-1_2_2 .ui-poptip-blue .ui-poptip-arrow-7 span{border-top-color:#F8FCFF}.arale-tip-1_2_2 .ui-poptip-white{color:#333}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-shadow{background-color:rgba(0,0,0,.05);FILTER:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#0c000000, endColorstr=#0c000000)}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-container{background-color:#fff;border:1px solid #b1b1b1}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-10 em,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-9 em{border-right-color:#b1b1b1}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-11 em,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-12 em,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-1 em{border-bottom-color:#b1b1b1}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-2 em,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-3 em{border-left-color:#b1b1b1}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-5 em,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-6 em,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-7 em{border-top-color:#b1b1b1}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-10 span,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-9 span{border-right-color:#fff}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-11 span,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-12 span,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-1 span{border-bottom-color:#fff}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-2 span,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-3 span{border-left-color:#fff}.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-5 span,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-6 span,.arale-tip-1_2_2 .ui-poptip-white .ui-poptip-arrow-7 span{border-top-color:#fff}.arale-tip-1_2_2 .ui-poptip{top:0;left:0}</style></head>
+<body>
+
+
+
+
+<div id="J_qrPayOrder">
+
+        <input name="timeoutMillseconds" type="hidden" value="0" id="J_timeoutMillseconds">
+    <input name="orderDeadline" type="hidden" value="" id="J_orderDeadline">
+    <!-- 由于嵌入式二维码跳转到超时链接会超出预留的空间，因此直接将跳转链接传空 -->
+    <input name="timeoutUrl" type="hidden" value="" id="J_timeoutUrl">
+    <input name="qrCode" type="hidden" value="https://qr.alipay.com/upx02200esbt7zm9l9jz80ae" id="J_qrCode">
+    <input name="qrImgUrl" type="hidden" value="https://mobilecodec.alipay.com/show.htm?code=upx02200esbt7zm9l9jz80ae" id="J_qrImgUrl">
+    <input name="qrContextId" type="hidden" value="2016111300800061807cbfa27508c5cd98" id="J_qrContextId">
+    <input name="qrRenewalURL" type="hidden" value="https://excashier.alipay.com:443/standard/renewQRCode.json?payOrderId=db3661d923ec4347a527d7111f036b5c.80" id="J_qrRenewalURL">
+    <input name="qrPushCheckURL" type="hidden" value="" id="J_qrPushCheckURL">
+    <input name="qrLoopCheckURL" type="hidden" value="https://excashier.alipay.com:443/standard/queryQRStatus.json?payOrderId=db3661d923ec4347a527d7111f036b5c.80" id="J_qrLoopCheckURL">
+    <input name="qrPaySuccGotoURL" type="hidden" value="https://unitradeprod.alipay.com:443/acq/cashierReturn.htm?sign=K1iSL1p2ifr1FRWxY9HEAOFdE6%252F1jmpi8cD0EkrznnyGb2J8%252FX0m%252B7LUPbE%253D&amp;outTradeNo=2001413447&amp;pid=2088311865032391&amp;type=1" id="J_qrPaySuccGotoURL">
+    <input name="resultPageStayTime" type="hidden" value="5" id="J_resultPageStayTime">
+    <input name="qrUseImage" type="hidden" value="false" id="J_qrUseImage">
+    <input name="qrCheckMode" type="hidden" value="LOOP" id="J_qrCheckMode">
+    <input name="qrExpirySeconds" type="hidden" value="99" id="J_qrExpirySeconds">
+    <input name="qrLogonId" type="hidden" value="" id="J_qrLogonId">
+    <input name="qrBizType" type="hidden" value="UNI_PC_MERCHANT" id="J_qrBizType">
+    <input name="qrDiscountText" type="hidden" value="" id="J_qrDiscountText">
+    <input name="qrDiscountDesc" type="hidden" value="" id="J_qrDiscountDesc">
+
+    <div class="ui-content">
+
+
+        <div class="qrpay-content">
+            <div class="ft-center">
+                <div data-role="qrPayArea" class="qrcode-mini qrcode-area" id="J_qrPayArea">
+
+    <div class="qrcode-mini-content fn-left">
+        <div class="qrcode-header">
+            <div data-role="qrPayReward" class="qrcode-reward fn-hide" style="display: none;">
+                <span data-role="qrPayRewardText"></span><i data-role="qrPayRewardTipIcon" class="iconfont qrcode-reward-question fn-hide">&#61514;</i>
+            </div>
+        </div>
+
+        <div data-role="qrPayCrash" class="qrcode-img-area fn-hide">
+            <div>
+                <i class="iconfont qrpay-crash-icon">&#61511;</i>
+            </div>
+            <p>二维码太忙了</p>
+            <p>请稍后再试</p>
+            <a href="https://excashier.alipay.com/standard/auth.htm?payOrderId=db3661d923ec4347a527d7111f036b5c.80#" class="mi-button mi-button-mwhite" data-role="qrPayRefreshBtn" seed="qrcodeRefreshBtn"><span class="mi-button-text">重试</span></a>
+
+        </div>
+
+        <div data-role="qrPayImg" class="qrcode-img-area">
+            <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" style="display: none;">加载中</div>
+        <div style="position: relative;display: inline-block;"><canvas width="75" height="75" style="float: left;"></canvas><img src="./T1Z5XfXdxmXXXXXXXX.png" style="position: absolute;top: 50%;left: 50%;width:18.75px;height:18.75px;margin-left: -9.375px;margin-top: -9.375px"></div></div>
+
+    </div>
+    <div class="qrcode-mini-explain fn-left">
+        <div class="ft-14" data-role="qrPayTitle">支付宝扫码支付</div>
+        <div data-role="qrPayExplain" class="qrcode-explain ">
+            <div>
+                <p><a href="https://mobile.alipay.com/index.htm" target="_blank" seed="qr-pay-download">手机支付宝下载</a></p>
+                <p><a href="https://help.alipay.com/lab/help_detail.htm?help_id=380925" target="_blank" seed="qr-pay-help">如何使用？</a></p>
+            </div>
+        </div>
+        <div data-role="qrPayScanSuccess" class="mi-notice mi-notice-success mi-notice-titleonly qrcode-notice fn-hide">
+            <div class="mi-notice-cnt">
+                <div class="mi-notice-title qrcode-notice-title fn-left">
+                    <i class="iconfont qrcode-notice-iconfont" title="扫描成功">&#61513;</i>
+
+                    <p class="qrcode-notice-bar">扫码成功</p>
+
+                    <p class="mi-notice-explain-other qrcode-notice-explain">
+                        请在手机支付宝上
+                    </p>
+                    <p class="mi-notice-explain-other qrcode-notice-explain">
+                        完成付款
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+ 
+<!-- uitpl:/component/tracker.vm -->
+<!-- FD:106:alipay/tracker/tracker.vm:START --><!-- FD:106:alipay/tracker/tracker.vm:785:tracker.schema:全站自动化/性能/敏感信息打点开关:START -->
+
+
+
+<script type="text/javascript">
+window.Smartracker && Smartracker.sow && Smartracker.sow();
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+
+window.agp_custom_config = {
+  BASE_URL: '//kcart.alipay.com/p.gif',
+  TIMING_ACTION_URL: '//kcart.alipay.com/x.gif'
+}
+
+</script>
+<script charset="utf-8" src="./index.js.下载"></script>
+
+
+
+
+
+<!-- FD:106:alipay/tracker/sai.vm:START --><script>
+    sensScanConfig={
+        ratio: 0.01,
+        modules: '*',
+        types: '*'
+      };
+</script>
+
+<script src="./monitor-sens.min.js.下载"></script>
+<!-- FD:106:alipay/tracker/sai.vm:END -->
+
+
+
+<!-- FD:106:alipay/tracker/cmsbuffer.vm:START --><!-- FD:106:alipay/tracker/cmsbuffer.vm:997:cmsbuffer.schema:main-CMS全站修复:START -->
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+
+
+
+<script>
+try {
+  (function() {
+  var logServer = 'https://magentmng.alipay.com/m.gif';
+  var sample = 0.0001;
+  var url = "https://a.alipayobjects.com/http-watch/1.0.7/index.js";
+
+  // 判断比例
+  if (!!window.addEventListener && Array.prototype.map && Math.random() < sample) {
+    var HEAD = document.head || document.getElementsByTagName('head')[0];
+
+    var spt = document.createElement('script');
+    spt.src = url;
+    HEAD.appendChild(spt);
+
+	setTimeout(function() {
+	  window.httpWatch && window.httpWatch({ sample: 1, appname: 'excashier-80-11', logServer: logServer });
+	}, 1000);
+  }
+  })();
+} catch(e) {}
+</script>
+
+
+
+<script src="./index.js(1).下载"></script>
+<!-- FD:106:alipay/tracker/cmsbuffer.vm:997:cmsbuffer.schema:main-CMS全站修复:END -->
+<!-- FD:106:alipay/tracker/cmsbuffer.vm:END --><!-- FD:106:alipay/tracker/tracker.vm:785:tracker.schema:全站自动化/性能/敏感信息打点开关:END -->
+<!-- FD:106:alipay/tracker/tracker.vm:END -->
+<script>
+seajs.use('excashier/front/2016.04.25/standardQrcodeEmbedMiniFront');
+
+
+
+
+</script>
+<div class="ui-poptip ui-poptip-white qrpay-discount-tip" id="J_qrPayTip">
+    <div class="ui-poptip-shadow">
+        <div class="ui-poptip-container qrpay-discount-container">
+            <div class="ui-poptip-arrow ui-poptip-arrow-10">
+                <em></em>
+                <span></span>
+            </div>
+            <div class="ui-poptip-content">
+                <p>使用扫码支付，不可与</p>
+                <p>支付宝其他优惠同时使用。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<iframe id="iframeGo" name="iframeGo" style="display: none;" src="./saved_resource.html"></iframe></body></html>

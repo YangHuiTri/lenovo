@@ -1,0 +1,225 @@
+var cookie = getCookie("userPayMethod");
+var lenovoId = "";
+var directbank = "";
+var payType = "";
+var lenovoIdNow = $("#lenovoId").val();
+if(cookie != ""){
+    lenovoId = cookie.split(",")[0];
+    directbank = cookie.split(",")[1];
+    payType = cookie.split(",")[2];
+}else{
+
+}
+
+//alert("lenovoId>>>>"+lenovoId+"payType>>>>"+payType+"directbank>>>>"+directbank);
+pay_method__checked();
+
+function pay_method__checked(){
+    if(lenovoId == lenovoIdNow){
+        if(payType == "1"){
+            if($("#zhifubao_wap").length != 0){//判断是否是wap版
+                $("#zhifubao_wap").addClass('payment-method-list on');
+                /*if($("#divid").length > 0){
+                    $("#divid").addClass('pay-bank-list on');
+                }*/
+            }else{
+                if(directbank == "" ){
+                    $("#zhifubao").addClass('active');
+                }
+            }
+        }else if(payType == "3" || payType == "4"){
+            if(directbank == ""){
+                $("#zhifubao").addClass('active');
+            }else if(directbank == "ICBCB2C"){
+                $("#gs").addClass('active');
+            }else if(directbank == "CCB"){
+                $("#js").addClass('active');
+            }else if(directbank == "BOCB2C"){
+                $("#zh").addClass('active');
+            }else if(directbank == "ABC"){
+                $("#ny").addClass('active');
+            }else if(directbank == "SPDB"){
+                $("#pf").addClass('active');
+            }else if(directbank == "CIB"){
+                $("#xy").addClass('active');
+            }else if(directbank == "GDB"){
+                $("#gf").addClass('active');
+            }else if(directbank == "FDB"){
+                $("#hy").addClass('active');
+            }else if(directbank == "CITIC"){
+                $("#zx").addClass('active');
+            }else if(directbank == "HZCBB2C"){
+                $("#hz").addClass('active');
+            }else if(directbank == "SHBANK"){
+                $("#sh").addClass('active');
+            }else if(directbank == "NBBANK"){
+                $("#nb").addClass('active');
+            }else if(directbank == "SPABANK"){
+                $("#pa").addClass('active');
+            }else if(directbank == "CEBBANK"){
+                $("#gd").addClass('active');
+            }else if(directbank == "POSTGC"){
+                $("#yz").addClass('active');
+            }else if(directbank == "CMB"){
+                $("#zfbzs").addClass('active');
+            }else if(directbank == "CMBC"){
+                $("#ms").addClass('active');
+            }else if(directbank == "CITIC-DEBIT"){
+                $("#zx").addClass('active');
+            }else if(directbank == "CEB-DEBIT"){
+                $("#gd").addClass('active');
+            }else if(directbank == "BJRCB"){
+                $("#bjns").addClass('active');
+            }else if(directbank == "COMM"){
+                $("#jt").addClass('active');
+            }else if(directbank == "BJBANK"){
+                $("#bj").addClass('active');
+            }else if(directbank == "SHRCB"){
+                $("#shns").addClass('active');
+            }
+        }else if(payType == "0"){
+            if($("#zh_wap").length != 0){//判断是否是wap版
+                /*$("#yinhangka").addClass('payment-method-list bank-list on');*/
+                $("#zh_wap_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }else{
+                $("#zs").addClass('active');
+            }
+        }else if(payType == "7"){
+            if($("#yinlian_wap").length != 0){//判断是否是wap版
+                $("#yinlian_wap").addClass('payment-method-list bank-list on');
+            }else{
+                $("#yinlian").addClass('active');
+            }
+        }else if(payType == "9"){
+            if($("#weixin_wap").length != 0){//判断是否是wap版
+                $("#weixin_wap").addClass('payment-method-list on');
+            }else{
+                $("#weixin").addClass('active');
+            }
+        }else if(payType == "10") {
+            if ($("#nhfq_wap").length != 0) {//判断是否是wap版
+                $("#nhfq_wap").addClass('red');
+            } else {
+                $("#nhfq").addClass('red');
+            }
+        }else if(payType == "11"){
+            if ($("#hbfq_wap").length != 0) {//判断是否是wap版
+                $("#hbfq_wap").addClass('on');
+                $("#fenqi").addClass('pay-bank-list on');
+            } else {
+                $("#hbfq").addClass('red');
+            }
+        }else if(payType == "6"){
+            /* $(".pay-bank-list").find("li").each(function(){
+             $(this).attr("style","display:block;")
+             })*/
+            if(directbank == ""){
+                $("#zh_wap_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }else if(directbank == "DEBITCARD_ICBC"){
+                $("#gs_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }else if(directbank == "DEBITCARD_ABC"){
+                $("#ny_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }else if(directbank == "DEBITCARD_CCB"){
+                $("#js_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }else if(directbank == "DEBITCARD_COMM"){
+                $("#comm_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }else if(directbank == "DEBITCARD_PSBC"){
+                $("#psbc_li").addClass('on');
+                $("#divid").addClass('pay-bank-list on');
+            }
+            /*if(directbank == "DEBITCARD_ICBC" ||
+             directbank == "DEBITCARD_ABC" ||
+             directbank == "DEBITCARD_CCB" ||
+             directbank == "DEBITCARD_COMM" ||
+             directbank == "DEBITCARD_PSBC"){
+             $("#yinhangka").addClass('payment-method-list bank-list on');
+             }*/
+        }else if(payType == "2"){
+            if($("#zhifubao_wap").length != 0){//判断是否是wap版
+                $("#zhifubao_wap").addClass('payment-method-list on');
+                /*if($("#divid").length > 0){
+                    $("#divid").addClass('pay-bank-list on');
+                }*/
+            }else{
+                $("#zhifubao").addClass('active');
+            }
+        }else{
+
+        }
+    }
+
+}
+
+//得到cookie
+function getCookie(c_name)
+{
+    if (document.cookie.length>0)
+    {
+        c_start=document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1)
+        {
+            c_start=c_start + c_name.length+1
+            c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        }
+    }
+    return ""
+}
+
+function SetCookie(name,value)
+{
+    var Days = 183; //此 cookie 将被保存 30 天
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function openbankcard(){
+    var classAttr = $("#divid").attr('class');
+    /*var display = $("#divid").css('display');*/
+    if(classAttr == "pay-bank-list on"){
+        $("#divid").attr("class","pay-bank-list");
+    }else if(classAttr == "pay-bank-list"){
+        $("#divid").attr("class","pay-bank-list on");
+    }
+}
+
+function openFenQicard(){
+    var classAttr = $("#fenqi").attr('class');
+    /*var display = $("#divid").css('display');*/
+    if(classAttr == "pay-bank-list on"){
+        $("#fenqiList").attr("class","pay-bank-list");
+        $("#fenqi").attr("class","pay-bank-list");
+    }else if(classAttr == "pay-bank-list"){
+        $("#fenqi").attr("class","pay-bank-list on");
+    }
+}
+
+var openFenQiList = function(){
+    var classAttr = $("#fenqiList").attr('class');
+    /*var display = $("#divid").css('display');*/
+    if(classAttr == "pay-bank-list on"){
+        $("#fenqiList").attr("class","pay-bank-list");
+    }else if(classAttr == "pay-bank-list"){
+        $("#fenqiList").attr("class","pay-bank-list on");
+    }
+}
+
+//取消选中效果
+var unchecked = function(){
+    $(".pay_types .pay_plats li").removeClass('active');
+}
+
+
+
+
+
+
+

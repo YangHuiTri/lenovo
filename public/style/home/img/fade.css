@@ -1,0 +1,10 @@
+.lunbo_fade .dots{position: absolute;bottom:40px;left:0;z-index: 1;width: 100%;}
+.lunbo_fade .dots > ul {position: absolute;top:0;left:0;list-style: none;}
+.lunbo_fade .dots > ul > li {float: left;width: 11px;height: 11px;line-height: 11px;text-align: center;border-radius: 50%;background: #383838;color: #fff;margin: 5px;}
+.lunbo_fade .dots > ul > li.active{background: #a9a9a9;}
+
+.lunbo_fade {position: relative;}
+.lunbo_fade .wrap{position: relative;overflow: hidden;}
+.lunbo_fade .wrap > ul{position: relative;}
+.lunbo_fade .wrap > ul > li{position: absolute;top: 0;left: 0;z-index: 1;display: none;}
+.lunbo_fade .wrap > ul > li.nohid{display: block;}

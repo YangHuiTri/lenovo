@@ -1,0 +1,46 @@
+function getBrowserInfo(){
+    var obj = {}
+	var agent = navigator.userAgent.toLowerCase() ;
+
+	var regStr_ie = /msie [\d.]+;/gi ;
+	var regStr_ff = /firefox\/[\d.]+/gi
+	var regStr_chrome = /chrome\/[\d.]+/gi ;
+	var regStr_saf = /safari\/[\d.]+/gi ;
+	//IE
+	if(agent.indexOf("msie") > 0)
+	{
+		var o = agent.match(regStr_ie) ;
+		var a = o[0].split(" ");
+		var b = {"b":a[0],"i":a[1].split(";")[0]}
+		return b
+	}
+
+	//firefox
+	if(agent.indexOf("firefox") > 0)
+	{
+		var o = agent.match(regStr_ff) ;
+		var a = o[0].split("/");
+		var b = {"b":a[0],"i":a[1]}
+		return b
+	}
+
+	//Chrome
+	if(agent.indexOf("chrome") > 0)
+	{
+		var o = agent.match(regStr_chrome) ;
+		var a = o[0].split("/");
+		var b = {"b":a[0],"i":a[1]}
+		return b
+	}
+
+	//Safari
+	if(agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0)
+	{
+		var o = agent.match(regStr_saf) ;
+		var a = o[0].split("/");
+		var b = {"b":a[0],"i":a[1]}
+		return b
+	}
+
+    return obj
+}
