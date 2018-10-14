@@ -1,49 +1,41 @@
-@extends('admin.public.admin')
-
-@section('main')
-
-<!-- 内容 -->
-<div class="col-md-10">
-	
-	<ol class="breadcrumb">
-		<li><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-		<li><a href="#">用户管理</a></li>
-		<li class="active">管理员修改</li>
-
-		<button class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-refresh"></span></button>
-	</ol>
-
-	<!-- 面版 -->
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<a href="index.html" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> 管理员页面</a>
-			<a href="" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 修改管理员</a>
+<form action="" onsubmit="return false;" id="formEdit">
+	<div class="form-group">
+		<label for="">用户名</label>
+		<input type="text" name="name" disabled value="{{$data->name}}" class="form-control" placeholder="请输入原密码">
+		<div id="userInfo">
 			
-			
-
-
 		</div>
-		<div class="panel-body">
-			<form action="">
-				<div class="form-group">
-					<label for="">User</label>
-					<input type="text" name="" class="form-control" id="">
-				</div>
-
-				<div class="form-group">
-					<label for="">PASS</label>
-					<input type="password" name="" class="form-control" id="">
-				</div>
-
-				<div class="form-group">
-					<input type="submit" value="提交" class="btn btn-success">
-					<input type="reset" value="重置" class="btn btn-danger">
-				</div>
-
-			</form>
-		</div>
-		
+		<input type="hidden" name="id" value="{{$data->id}}">
 	</div>
-</div>
+	<div class="form-group">
+		<label for="">密码</label>
+		<input type="password" name="pass" value="{{$data->pass}}" class="form-control" placeholder="请输入新密码">
+		<div id="passInfo1">
+			
+		</div>
 
-@endsection
+	</div>
+	<div class="form-group">
+		<label for="">确认密码</label>
+		<input type="password" name="repass" value="{{$data->pass}}" class="form-control" placeholder="请再次输入密码">
+	</div>
+	<div class="form-group">
+		<label for="">状态</label>
+		<br>
+
+		@if($data->status)
+			<input type="radio" name="status"  value="0">正常
+			<input type="radio" name="status" checked value="1">禁用
+		@else
+			
+			<input type="radio" name="status" checked value="0">正常
+			<input type="radio" name="status" value="1"禁用
+		@endif
+	</div>
+	<div class="form-group pull-right">
+		<input type="submit" value="提交" onclick="save()" class="btn btn-success">
+		<input type="reset" id="reset1" value="重置" class="btn btn-danger">
+	</div>
+
+	<div style="clear:both"></div>
+</form>

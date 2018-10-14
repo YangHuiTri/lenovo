@@ -44,9 +44,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
 	//2.后台管理员管理
 	Route::resource('admin','AdminController');
-
+	//后台管理员状态修改路由
+	Route::post('admin/ajaxStatu','AdminController@ajaxStatu');
 	//3.后台用户管理
 	Route::resource('user','UserController');
+
+	//后台分类管理
+	Route::resource('types','TypesController');
 
 
 });

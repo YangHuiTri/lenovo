@@ -105,10 +105,10 @@
 				<!-- 分类管理 -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h2 class="panel-title"><span class="glyphicon glyphicon-tasks"></span> 分类管理</h2>
+						<h2 class="panel-title" id="types"><span class="glyphicon glyphicon-tasks"></span> 分类管理</h2>
 					</div>
 					<ul class="list-group">
-					    <li class="list-group-item"><a href="">分类列表</a></li> 	
+					    <li class="list-group-item"><a href="/admin/types">分类列表</a></li> 	
 					</ul>
 				</div>
 				<!-- 商品管理 -->

@@ -7,8 +7,8 @@
 	
 	<ol class="breadcrumb">
 		<li><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-		<li><a href="#">用户管理</a></li>
-		<li class="active">管理员添加</li>
+		<li><a href="#">分类管理</a></li>
+		<li class="active">分类修改</li>
 
 		<button class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-refresh"></span></button>
 	</ol>
@@ -16,8 +16,8 @@
 	<!-- 面版 -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<a href="index.html" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> 管理员页面</a>
-			<a href="" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 添加管理员</a>
+			<a href="index.html" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> 分类页面</a>
+			<a href="" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 修改分类</a>
 			
 			
 
