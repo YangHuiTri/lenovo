@@ -43,11 +43,24 @@
 			<tr>
 				<td><input type="checkbox" name="" id=""></td>
 				<td>{{$value->id}}</td>
-				<td>{{$value->name}}</td>
+				
+				<?php
+				$arr = explode(",", $value->path);
+				$tot = count($arr) - 2;
+
+				?>
+
+
+				<td>{{str_repeat("|====",$tot)}}{{$value->name}}</td>
 				<td>{{$value->title}}</td>
 				<td>{{$value->keywords}}</td>
 				<td>{{$value->description}}</td>
-				<td><a href="/admin/types/create?pid={{$value->id}}&path={{$value->path}}{{$value->id}},">添加子类</a></td>
+				@if($tot >= 2)
+					<td><a href="javascript:;">添加子类</a></td>
+				@else
+					<td><a href="/admin/types/create?pid={{$value->id}}&path={{$value->path}}{{$value->id}},">添加子类</a></td>
+				@endif
+				
 
 				@if($value->is_lou)
 					<td><span class="btn btn-success">是</span></td>
