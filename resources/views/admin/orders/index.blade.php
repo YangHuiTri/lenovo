@@ -15,7 +15,7 @@
 	<!-- 面版 -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<button class="btn btn-danger">会员展示</button>
+			<button class="btn btn-danger">订单展示</button>
 			<p class="pull-right tots" >共有  条数据</p>
 			<form action="" class="form-inline pull-right">
 				<div class="form-group">
@@ -28,11 +28,24 @@
 
 		</div>
 		<table class="table-bordered table table-hover">
-			<th>ID</th>
-			<th>TEL</th>
-			<th>EMAIL</th>
-			<th>注册时间</th>
+			<th>订单号</th>
+			<th>用户</th>
+			<th>收货人信息</th>
 			<th>状态</th>
+			<th>操作</th>
+
+			@foreach($data as $value)
+				<tr>
+					<td><a href="/admin/orders/list?code={{$value->code}}">{{$value->code}}</a></td>
+					<td>{{$value->name}}</td>
+					<td>
+						<a href="/admin/orders/addr?id={{$value->aid}}">收货人信息</a>
+					</td>
+					<td>{{$value->ssname}}</td>
+					<td>修改状态</td>
+				</tr>
+
+			@endforeach
 
 
 

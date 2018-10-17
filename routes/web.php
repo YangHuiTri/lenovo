@@ -57,6 +57,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
 	//后台订单管理
 	Route::get('orders','OrdersController@index');
+		//查看订单详情
+		Route::get('orders/list','OrdersController@lists');
+		//查看收货地址
+		Route::get('orders/addr','OrdersController@addr');
 
 
 
