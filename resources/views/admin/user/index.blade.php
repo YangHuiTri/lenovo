@@ -15,13 +15,11 @@
 	<!-- 面版 -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> 批量删除</button>
-			<a href="/admin/user/create" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 添加用户</a>
-			
-			<p class="pull-right tots" >共有 10 条数据</p>
+			<button class="btn btn-danger">会员展示</button>
+			<p class="pull-right tots" >共有 {{ $tot }} 条数据</p>
 			<form action="" class="form-inline pull-right">
 				<div class="form-group">
-					<input type="text" name="" class="form-control" placeholder="请输入你要搜索的内容" id="">
+					<input type="text" name="search" class="form-control" placeholder="请输入你要搜索的内容" id="">
 				</div>
 				
 				<input type="submit" value="搜索" class="btn btn-success">
@@ -30,73 +28,32 @@
 
 		</div>
 		<table class="table-bordered table table-hover">
-			<th><input type="checkbox" name="" id=""></th>
 			<th>ID</th>
-			<th>NAME</th>
-			<th>PASS</th>
-			<th>上次登录时间</th>
+			<th>TEL</th>
+			<th>EMAIL</th>
+			<th>注册时间</th>
 			<th>状态</th>
-			<th>操作</th>
+
+			@foreach($data as $value)
 			<tr>
-				<td><input type="checkbox" name="" id=""></td>
-				<td>1</td>
-				<td>name1</td>
-				<td>pass1</td>
-				<td>2016-10-10 10:10:10</td>
-				<td><span class="btn btn-success">开启</span></td>
-				<td><a href="/admin/user/1/edit" class="glyphicon glyphicon-pencil"></a>&nbsp;&nbsp;&nbsp;<a href="" class="glyphicon glyphicon-trash"></a></td>
+				<td>{{ $value -> id }}</td>
+				<td>{{ $value -> tel }}</td>
+				<td>{{ $value -> email }}</td>
+				<td>{{ date('Y-m-d H:i:s', $value -> time) }}</td>
+				@if($value -> status == 0)
+					<td><span class="btn btn-primary">未激活</span></td>
+				@elseif($value -> status == 1)
+					<td><span class="btn btn-success">已激活</span></td>
+				@else
+					<td><span class="btn btn-danger">黑名单</span></td>
+				@endif
 			</tr>
-			<tr>
-				<td><input type="checkbox" name="" id=""></td>
-				<td>1</td>
-				<td>name1</td>
-				<td>pass1</td>
-				<td>2016-10-10 10:10:10</td>
-				<td><span class="btn btn-success">开启</span></td>
-				<td><a href="/admin/user/1/edit" class="glyphicon glyphicon-pencil"></a>&nbsp;&nbsp;&nbsp;<a href="" class="glyphicon glyphicon-trash"></a></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="" id=""></td>
-				<td>1</td>
-				<td>name1</td>
-				<td>pass1</td>
-				<td>2016-10-10 10:10:10</td>
-				<td><span class="btn btn-success">开启</span></td>
-				<td><a href="/admin/user/1/edit" class="glyphicon glyphicon-pencil"></a>&nbsp;&nbsp;&nbsp;<a href="" class="glyphicon glyphicon-trash"></a></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="" id=""></td>
-				<td>1</td>
-				<td>name1</td>
-				<td>pass1</td>
-				<td>2016-10-10 10:10:10</td>
-				<td><span class="btn btn-success">开启</span></td>
-				<td><a href="/admin/user/1/edit" class="glyphicon glyphicon-pencil"></a>&nbsp;&nbsp;&nbsp;<a href="" class="glyphicon glyphicon-trash"></a></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="" id=""></td>
-				<td>1</td>
-				<td>name1</td>
-				<td>pass1</td>
-				<td>2016-10-10 10:10:10</td>
-				<td><span class="btn btn-success">开启</span></td>
-				<td><a href="/admin/user/1/edit" class="glyphicon glyphicon-pencil"></a>&nbsp;&nbsp;&nbsp;<a href="" class="glyphicon glyphicon-trash"></a></td>
-			</tr>
+			@endforeach
 
 		</table>
 		<!-- 分页效果 -->
 		<div class="panel-footer">
-			<nav style="text-align:center;">
-				<ul class="pagination">
-					<li><a href="#">&laquo;</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
-			</nav>
+			{{ $data -> links() }}
 
 		</div>
 	</div>

@@ -114,19 +114,19 @@
 				<!-- 商品管理 -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h2 class="panel-title"><span class="glyphicon glyphicon-gift"></span> 商品管理</h2>
+						<h2 class="panel-title" id="goods"><span class="glyphicon glyphicon-gift"></span> 商品管理</h2>
 					</div>
 					<ul class="list-group">
-					    <li class="list-group-item"><a href="">商品列表</a></li> 	
+					    <li class="list-group-item"><a href="/admin/goods">商品列表</a></li> 	
 					</ul>
 				</div>
 				<!-- 订单管理 -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h2 class="panel-title"><span class="glyphicon glyphicon-list-alt"></span> 订单管理</h2>
+						<h2 class="panel-title" id="orders"><span class="glyphicon glyphicon-list-alt"></span> 订单管理</h2>
 					</div>
 					<ul class="list-group">
-					    <li class="list-group-item"><a href="">订单列表</a></li> 	
+					    <li class="list-group-item"><a href="/admin/orders">订单列表</a></li> 	
 					</ul>
 				</div>
 				<!-- 评论管理 -->、
@@ -145,9 +145,10 @@
 						<h2 class="panel-title"><span class="glyphicon glyphicon-certificate"></span> 系统管理</h2>
 					</div>
 					<ul class="list-group">
-					    <li class="list-group-item"><a href="">系统配置</a></li>
-					    <li class="list-group-item"><a href="">轮播图管理</a></li>
-					    <li class="list-group-item"><a href="">广告管理</a></li>
+					    <li class="list-group-item"><a href="/admin/sys/config">系统配置</a></li>
+					    <li class="list-group-item"><a href="/admin/sys/slider">轮播图管理</a></li>
+					    <li class="list-group-item"><a href="/admin/sys/ads">广告管理</a></li>
+					    <li class="list-group-item"><a href="/admin/sys/types">分类广告管理</a></li>
 					 	
 					</ul>
 				</div>

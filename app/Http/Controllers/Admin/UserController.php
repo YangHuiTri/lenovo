@@ -4,41 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class UserController extends Controller
 {
     //管理员首页
-    public function index(){
-        return view('admin.user.index');
+    public function index(Request $request){
+        $search = $request -> input('search');
+        if($search){
+            //查询数据总数
+            $tot = DB::table('user') -> where('tel',$search) -> count();
+            //查询数据库
+            $data = DB::table('user') -> where('tel',$search) -> paginate(10);
+            return view('admin.user.index')->with('data',$data) -> with('tot',$tot);
+        }else{
+            //查询数据总数
+            $tot = DB::table('user') -> count();
+            //查询数据库
+            $data = DB::table('user')->paginate(10);
+            return view('admin.user.index')->with('data',$data) -> with('tot',$tot);
+        }
+
+        
     }
-
-    //添加页面  admin/user/create
-    public function create(){
-    	return view('admin.user.add');
-    }
-
-    //插入操作  admin/user   post
-    public function store(){
-
-    }
-
-    //修改页面  admin/user/{user}/edit  get
-    public function edit(){
-    	return view('admin.user.edit');
-    }
-
-    //更新操作  admin/user/{user}   put
-    public function update(){
-
-    }
-
-    //删除操作  admin/user/{user}   delete
-    public function destroy(){
-
-    }
-
-
-
-
 
 }
+
+
