@@ -52,4 +52,33 @@ class OrdersController extends Controller
 		//加载页面
 		return view('admin.orders.addr')->with('data',$data);
     }
+
+    //修改订单状态
+    public function edit(Request $request){
+        if ($_POST) {
+            $sid = $request->input("sid");
+            $code = $request->input("code");
+
+            $sql = "update orders set sid=$sid where code='$code'";
+
+            // 执行sql语句
+
+            if (DB::update($sql)) {
+                # code...
+
+                return redirect("admin/orders");
+            }else{
+                return back();
+            }
+        }else{
+           
+
+            // 查询所有的订单状态
+
+            $data = DB::table("orderstatu")->get();
+
+            return view("admin.orders.edit")->with("data",$data);
+        }
+
+    } 
 }

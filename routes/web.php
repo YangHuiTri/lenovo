@@ -61,6 +61,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 		Route::get('orders/list','OrdersController@lists');
 		//查看收货地址
 		Route::get('orders/addr','OrdersController@addr');
+		//修改订单状态
+		Route::any('orders/edit','OrdersController@edit');
+
+	//评论管理
+	Route::get('comment','CommentController@index');
+	Route::post('comment/ajaxStatu','CommentController@ajaxStatu');
 
 
 

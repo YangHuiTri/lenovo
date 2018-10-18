@@ -32,6 +32,7 @@
 			<th>用户</th>
 			<th>收货人信息</th>
 			<th>状态</th>
+			<th>下单时间</th>
 			<th>操作</th>
 
 			@foreach($data as $value)
@@ -42,7 +43,14 @@
 						<a href="/admin/orders/addr?id={{$value->aid}}">收货人信息</a>
 					</td>
 					<td>{{$value->ssname}}</td>
-					<td>修改状态</td>
+					<td>{{date('Y-m-d H:i:s',$value->time)}}</td>
+					<td>
+						@if($value->sid == 6)
+							<a href="javascript:;" style="text-decoration: none">修改状态</a>
+						@else
+							<a href="/admin/orders/edit?sid={{$value->sid}}&code={{$value->code}}">修改状态</a>
+						@endif
+					</td>
 				</tr>
 
 			@endforeach

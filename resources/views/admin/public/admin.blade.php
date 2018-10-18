@@ -132,10 +132,10 @@
 				<!-- 评论管理 -->、
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h2 class="panel-title"><span class="glyphicon glyphicon-envelope"></span> 评论管理</h2>
+						<h2 class="panel-title" id="comment"><span class="glyphicon glyphicon-envelope"></span> 评论管理</h2>
 					</div>
 					<ul class="list-group">
-					    <li class="list-group-item"><a href="">评论列表</a></li>	
+					    <li class="list-group-item"><a href="/admin/comment">评论列表</a></li>
 					</ul>
 				</div>
 
