@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{config('web.title')}}</title>
-  <meta name="keywords" content="{{config('web.keywords')}}" />
-    <meta name="description" content="{{config('web.description')}}" />
+  <title><?php echo e(config('web.title')); ?></title>
+  <meta name="keywords" content="<?php echo e(config('web.keywords')); ?>" />
+    <meta name="description" content="<?php echo e(config('web.description')); ?>" />
   <link rel="shortcut icon" href="/style/home/img/1.png">
   <link rel="stylesheet" href="/style/home/css/lenovo.css">
   <script src="/style/home/js/jquery.js"></script>
@@ -12,7 +12,7 @@
 </head>
 <body>
   <!-- 头 -->
-  @include('home.public.header')
+  <?php echo $__env->make('home.public.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
   
   <!-- 菜单 -->
@@ -775,26 +775,26 @@
       <div class="center">
       <ul class='imgs'>
 
-        @foreach($slider as $key=> $value)
-          @if($key==0)
-            <li class='active'><img src="/Uploads/lun/{{$value->img}}" alt=""></li>
+        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+          <?php if($key==0): ?>
+            <li class='active'><img src="/Uploads/lun/<?php echo e($value->img); ?>" alt=""></li>
 
-          @else
-            <li class=''><img src="/Uploads/lun/{{$value->img}}" alt=""></li>
+          <?php else: ?>
+            <li class=''><img src="/Uploads/lun/<?php echo e($value->img); ?>" alt=""></li>
 
-          @endif
-        @endforeach
+          <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
       </ul>
       <ul class='nums'>
         
-        @foreach($slider as $key=> $value)
+        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
           
-          @if($key==0)
+          <?php if($key==0): ?>
             <li class="active"></li>
-          @else
+          <?php else: ?>
             <li></li>
-          @endif
-        @endforeach
+          <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
       
       </ul>     
       <a href="javascript:;" class="btn btn-left"></a>
@@ -854,13 +854,13 @@
     </div>
     <div class="boo">
       <ul class="bo-1"> 
-        @foreach($ads as $key=> $value)
+        <?php $__currentLoopData = $ads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
           <li style="width: 252px; height: 159px;">
             <a target="_blank" href="">
-              <img src="/Uploads/ads/{{$value->img}}">
+              <img src="/Uploads/ads/<?php echo e($value->img); ?>">
             </a>
           </li>
-        @endforeach 
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?> 
       </ul>
       <a href="javascript:;" class="btn btn-left"></a>
       <a href="javascript:;" class="btn btn-right"></a>
@@ -1659,7 +1659,7 @@
    </div>
  </div>
  
-@include('home.public.footer')
+<?php echo $__env->make('home.public.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 </body>
 

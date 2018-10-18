@@ -35,13 +35,22 @@ Route::get('/admin/login','Admin\LoginController@index');
 //验证码
 Route::get('/admin/yzm', 'Admin\LoginController@yzm');
 
+//登录的处理操作
+Route::post('/admin/check','Admin\LoginController@check');
+
+//后台退出
+Route::get('/admin/logout','Admin\LoginController@logout');
+
 //文件上传
 Route::any('/admin/shangchuan','Admin\CommonController@upload');
 
+//清除缓存
+Route::get('/admin/flush','Admin\IndexController@flush');
 
 
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware'=>'adminLogin'], function(){
 	//1.后台首页路由
 	Route::get('/','IndexController@index');
 
@@ -66,6 +75,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 		//订单状态
 		Route::get('orders/statu','OrdersController@statuList');
 		Route::post('orders/statu/edit','OrdersController@statuEdit');
+
+
+	//缓存
+	Route::get('huancun','HuancunController@index');
+
+
 
 	//评论管理
 	Route::get('comment','CommentController@index');

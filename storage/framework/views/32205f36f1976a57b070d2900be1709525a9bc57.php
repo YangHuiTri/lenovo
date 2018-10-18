@@ -63,7 +63,7 @@
  <!-- 搜索 -->
 <div class="container search">
    <div class="search-left">
-     <a href="http://www.lenovo.com.cn"><img src="/style/home/img/5.png" alt=""></a>
+     <a href="http://www.lenovo.com.cn"><img src="/Uploads/sys/<?php echo e(config('web.logo')); ?>" alt=""></a>
    </div>
    <div class="search-right">
       <div class="fang">

@@ -33,7 +33,8 @@
 
 					<div class="panel-body">
 						<form action="/admin/check" method="post">
-							{{csrf_field()}}
+							<?php echo e(csrf_field()); ?>
+
 							<div class="input-group">
 								<span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
 								<input type="text" name="name" class="form-control" placeholder="Username">

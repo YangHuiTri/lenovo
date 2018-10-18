@@ -91,11 +91,13 @@ class Code{
 
 	//返回验证码
 	public function get() {
+		session_start();
 		return $_SESSION['code'];
 	}
 
 	//生成验证码
 	private function createCode() {
+		session_start();
 		$code = '';
 		for ($i = 0; $i < $this->codeLen; $i++) {
 			$code .= $this->codeStr [mt_rand(0, strlen($this->codeStr) - 1)];

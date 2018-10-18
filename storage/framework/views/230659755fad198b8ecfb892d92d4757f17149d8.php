@@ -62,7 +62,7 @@
 						<li class="dropdown">
 						  <a href="#" class="dropdown-toggle" data-toggle="dropdown">后台管理<span class="caret"></span></a>
 						  <ul class="dropdown-menu" role="menu">
-						    <li><a href="#">{{session('lenovoAdminUserInfo.name')}}</a></li>
+						    <li><a href="#"><?php echo e(session('lenovoAdminUserInfo.name')); ?></a></li>
 						    <li><a href="#" data-toggle="modal" data-target="#editPass">修改密码</a></li>
 						    <li><a href="#">前台首页</a></li>
 						    <li><a href="/admin/logout">退出</a></li>
@@ -156,7 +156,7 @@
 			</div>
 			
 			<!-- 占位 -->
-			@yield('main')
+			<?php echo $__env->yieldContent('main'); ?>
 		</div>
 	</div>
 
@@ -216,7 +216,7 @@ $name = isset($arr[2]) ? $arr[2] : '';
 		$(this).parent().next().toggle(500);
 	});
 
-	$("#{{$name}}").click();
+	$("#<?php echo e($name); ?>").click();
 	
 </script>
 </html>
