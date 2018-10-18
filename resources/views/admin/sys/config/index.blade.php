@@ -1,5 +1,6 @@
 @extends('admin.public.admin')
 
+
 @section('main')
 <!-- 引入CSS -->
 <link rel="stylesheet" href="/up/uploadify.css">
@@ -12,8 +13,8 @@
 	
 	<ol class="breadcrumb">
 		<li><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-		<li><a href="">用户管理</a></li>
-		<li class="active">用户列表</li>
+		<li><a href="#">系统管理</a></li>
+		<li class="active">系统列表</li>
 
 		<button class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-refresh"></span></button>
 	</ol>
@@ -60,7 +61,7 @@
 		</div>
 		
 	</div>
-
+</div>
 <script>
 	// 当所有HTML代码都加载完毕
 	$(function() {

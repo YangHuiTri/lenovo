@@ -81,4 +81,24 @@ class OrdersController extends Controller
         }
 
     } 
+
+    //订单状态列表的方法
+    public function statuList(){
+        //查询数据
+        $data = DB::table('orderstatu')->get();
+
+        //加载页面
+        return view('admin.orders.statuList')->with('data',$data);
+    }
+
+    //订单状态修改ajax
+    public function statuEdit(Request $request){
+        $arr = $request->except('_token');
+        $sql = "update orderstatu set name='$arr[name]' where id=$arr[id]";
+        if(DB::update($sql)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }

@@ -126,7 +126,8 @@
 						<h2 class="panel-title" id="orders"><span class="glyphicon glyphicon-list-alt"></span> 订单管理</h2>
 					</div>
 					<ul class="list-group">
-					    <li class="list-group-item"><a href="/admin/orders">订单列表</a></li> 	
+					    <li class="list-group-item"><a href="/admin/orders">订单列表</a></li>
+					    <li class="list-group-item"><a href="/admin/orders/statu">订单状态列表</a></li> 	
 					</ul>
 				</div>
 				<!-- 评论管理 -->、

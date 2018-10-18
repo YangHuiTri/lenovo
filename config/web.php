@@ -1,10 +1,9 @@
 <?php 
 
 return array (
-  'title' => '4444',
-  'keywords' => '1111',
-  'description' => '2222',
-  'baidu' => '3333',
-  'logo' => '149917629116556.jpg',
-  'oldLogo' => '',
+  'title' => '222',
+  'keywords' => '222',
+  'description' => '222',
+  'baidu' => '222',
+  'logo' => '15398485564194.png',
 ) ?>

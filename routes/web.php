@@ -63,6 +63,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 		Route::get('orders/addr','OrdersController@addr');
 		//修改订单状态
 		Route::any('orders/edit','OrdersController@edit');
+		//订单状态
+		Route::get('orders/statu','OrdersController@statuList');
+		Route::post('orders/statu/edit','OrdersController@statuEdit');
 
 	//评论管理
 	Route::get('comment','CommentController@index');

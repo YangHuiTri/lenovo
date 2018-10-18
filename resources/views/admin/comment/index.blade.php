@@ -84,9 +84,9 @@
 		//发送ajax请求
 		$.post('/admin/comment/ajaxStatu',{'id':id,'statu':val,'_token':'{{csrf_token()}}'},function(data){
 			if(data){
-				alert('success');
+				alert('修改成功');
 			}else{
-				alert('failed');
+				alert('修改失败');
 			}
 		});
 	}

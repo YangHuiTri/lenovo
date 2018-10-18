@@ -11,7 +11,7 @@ class TypesAdsController extends Controller
 {
     public function index(Request $request){
     	//多表查询
-    	$data = DB::table('typesads')->select('typesads.*','types.name')->join('types','types.id','=','typesads.cid')->paginate(1);
+    	$data = DB::table('typesads')->select('typesads.*','types.name')->join('types','types.id','=','typesads.cid')->paginate(5);
     	//加载页面
     	return view('admin.sys.types.index')->with('data',$data);
     }
