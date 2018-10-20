@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{{config("web.title")}}</title>
-	<meta name="keywords" content="{{config('web.keywords')}}" />
-	<meta name="description" content="{{config('web.description')}}" />
+	<title><?php echo e(config("web.title")); ?></title>
+	<meta name="keywords" content="<?php echo e(config('web.keywords')); ?>" />
+	<meta name="description" content="<?php echo e(config('web.description')); ?>" />
 	<link rel="shortcut icon" href="/style/home/img/1.png">
 	<link rel="stylesheet" href="/style/home/css/thinkpad.css">
 	<script src="/style/home/js/jquery.js"></script>
@@ -12,11 +12,11 @@
 </head>
 <body>
 	<!-- 头 -->
-	@include("home.public.header")
+	<?php echo $__env->make("home.public.header", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	<div class="container centers">
 		<div class="mianbao">
 		        	<a href="http://www.lenovo.com.cn">首页</a> &gt; <a href="#">商品详情</a>
-		         &gt; {{$goods->title}} 
+		         &gt; <?php echo e($goods->title); ?> 
 		</div>
 		<div class="action">
 			<div class="ac-left">  
@@ -27,28 +27,28 @@
                 <a href="javascript:;" class="l-r"></a>
                 <ul class="img-d" id="imgBig">
 
-                	@foreach($goodsImg as $img)
+                	<?php $__currentLoopData = $goodsImg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                     <li id="bigim0" style="z-index:1;filter: alpha(opacity=100); opacity: 1;"><a href="javascript:;"><!--最后效果abc.jpg  abc.w544.jpg -->
-                        <img width="544px" height="544px" src="/Uploads/goods/{{$img->img}}" alt="{{$goods->title}}">
+                        <img width="544px" height="544px" src="/Uploads/goods/<?php echo e($img->img); ?>" alt="<?php echo e($goods->title); ?>">
                     	</a>
                 	</li>
 
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 
                 </ul>
                 <div class="img-x">
 					<ul class="pro_ul" id="imgSmall" style="width: 408px;">
 
-						@foreach($goodsImg as $img)
+						<?php $__currentLoopData = $goodsImg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 					    
 
 						    <li id="im0" style="filter:alpha(opacity:100);opacity:1;">
 						    	<a href="javascript:;">
-						    	<img style="width:88px;height:88px;" src="/Uploads/goods/{{$img->img}}" alt="{{$goods->title}}">
+						    	<img style="width:88px;height:88px;" src="/Uploads/goods/<?php echo e($img->img); ?>" alt="<?php echo e($goods->title); ?>">
 						    	</a>
 						    </li>
 
-					    @endforeach
+					    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 						
 					</ul>
                 </div>
@@ -76,14 +76,14 @@
 					<!-- 基本信息上部  空白位-->
 		            
 					<!-- 商品基础信息 -->
-	        <h1 class="biaoti">{{$goods->title}}</h1>
-	            <p class="ar-jie">{{$goods->info}}</p>
+	        <h1 class="biaoti"><?php echo e($goods->title); ?></h1>
+	            <p class="ar-jie"><?php echo e($goods->info); ?></p>
 	        <div class="tishi">【温馨提示】<a href="&#10;http://click.lenovo.com.cn/phpstat/tourl.php?a=1775" target="blank"><font color="red">晒单最高送1年延保，点击晒单-&gt;</font></a><br>
 	        </div>
 	        <div class="ar-main">
 	            <div class="amt clearfix">
 	                <span >商城价：</span>
-	                <b>¥{{$goods->price}}</b>
+	                <b>¥<?php echo e($goods->price); ?></b>
 	                <div id="yd">
 	                    <div class="icon">预售</div>
 	                    <span id="preselldj">定金：0</span>
@@ -487,7 +487,8 @@
             <div id="content">
 					<!-- 商品详情 -->
 					<ul class="rt-box">
-						{!!$goods->text!!}
+						<?php echo $goods->text; ?>
+
 					</ul>
 									
 
@@ -498,7 +499,8 @@
 			<ul>
 		    <div class="ns_attributes-list">                         
         
-				{!!$goods->config!!}
+				<?php echo $goods->config; ?>
+
 			</div>
 			</ul>
                                                                             
@@ -514,23 +516,23 @@
 	<div class="ns_comment-inner" id="sppl_box">
 		<dl id="sppl_title"> 
 		 	<dt>
-			 	<b>{{round(($arr['goodTot']/$arr['commentTot'])*100)}}</b>
+			 	<b><?php echo e(round(($arr['goodTot']/$arr['commentTot'])*100)); ?></b>
 				<span>&nbsp;%</span>
 				<p>好评率</p>
 			</dt> 
-	  		<dd class="sppl_total active" data-level="0">全部评价(<span>{{$arr['commentTot']}}</span>)</dd>  
-		 	<dd class="sppl_good" data-level="3">好评(<span>{{$arr['goodTot']}}</span>)</dd> 
-		  	<dd class="sppl_medium" data-level="2">中评(<span>{{$arr['zhongTot']}}</span>)</dd>  
-		  	<dd class="sppl_total" data-level="1">差评(<span>{{$arr['chaTot']}}</span>)</dd> 
+	  		<dd class="sppl_total active" data-level="0">全部评价(<span><?php echo e($arr['commentTot']); ?></span>)</dd>  
+		 	<dd class="sppl_good" data-level="3">好评(<span><?php echo e($arr['goodTot']); ?></span>)</dd> 
+		  	<dd class="sppl_medium" data-level="2">中评(<span><?php echo e($arr['zhongTot']); ?></span>)</dd>  
+		  	<dd class="sppl_total" data-level="1">差评(<span><?php echo e($arr['chaTot']); ?></span>)</dd> 
 		</dl>
         <dl id="sppl_list" class="clearfix">
 
-        	@foreach($comment as $com)
+        	<?php $__currentLoopData = $comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $com): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 			<dd>  
 				<div class="sppl_top">  
-				<span style="color:red">{{str_repeat("★",$com->star)}}{{str_repeat('☆',5-$com->star)}}</span>  
+				<span style="color:red"><?php echo e(str_repeat("★",$com->star)); ?><?php echo e(str_repeat('☆',5-$com->star)); ?></span>  
 				<span class="sppl_username">匿名</span>   
-				<span class="sppl_time">{{date("Y-m-d H:i:s",$com->time)}}</span>  
+				<span class="sppl_time"><?php echo e(date("Y-m-d H:i:s",$com->time)); ?></span>  
 				</div>  
 				<div class="sppl_user_box">
 				<p><a class="clickpl" uuid="9ffce34a-deda-483c-8754-833b29421f76" href="javascript:void(0);">还不错  </a>
@@ -539,7 +541,7 @@
 				 
 			</dd>
 
-			@endforeach
+			<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 				
 		</dl>
 	</div>

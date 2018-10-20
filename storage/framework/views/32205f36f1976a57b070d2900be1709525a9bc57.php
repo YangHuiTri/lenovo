@@ -44,8 +44,13 @@
           <span class="guo">0</span>
           </a>
         </li>
-        <li><a class="zc" href="javascript:;">注册</a><span class="gang">|</span></li>
-        <li><a class="dl"href="javascript:;">登陆</a><span class="gang">|</span></li>
+        <?php if(session('lenovoHomeUserInfo')): ?>
+          <li><a href="/logout">退出</a><span class="gang">|</span></li>
+          <li><a href="">欢迎 <?php echo e(session('lenovoHomeUserInfo.name')?session('lenovoHomeUserInfo.name'):session('lenovoHomeUserInfo.email')); ?> 登录</a><span class="gang">|</span></li>
+        <?php else: ?>
+          <li><a class="zc" href="/reg">注册</a><span class="gang">|</span></li>
+          <li><a class="dl"href="/login">登录</a><span class="gang">|</span></li>
+        <?php endif; ?>
       </ul> 
     </div>
  </div> 
@@ -63,7 +68,7 @@
  <!-- 搜索 -->
 <div class="container search">
    <div class="search-left">
-     <a href="http://www.lenovo.com.cn"><img src="/Uploads/sys/<?php echo e(config('web.logo')); ?>" alt=""></a>
+     <a href="http://www.lianxiang.com"><img src="/Uploads/sys/<?php echo e(config('web.logo')); ?>" alt=""></a>
    </div>
    <div class="search-right">
       <div class="fang">
