@@ -52,6 +52,14 @@
 	//修改密码
 	Route::any('/savePass/{id}/{token}','Home\LoginController@savePass');
 
+	//购物车页面
+	Route::get('car','Home\CarController@index');
+
+	//加入购物车
+	Route::get('addCar','Home\CarController@addCar');
+
+
+
 
 
 

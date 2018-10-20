@@ -40,7 +40,7 @@
    <div class="nav-right">
       <ul>
         <li>
-          <a style="position:relative" href="./shop.html">购物车 
+          <a style="position:relative" href="/car">购物车 
           <span class="guo">0</span>
           </a>
         </li>

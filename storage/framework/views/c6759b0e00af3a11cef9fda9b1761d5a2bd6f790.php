@@ -127,45 +127,12 @@
 		            
 					<!-- 商品规格 -->
 		<div class="xilei">
-<!-- 			<ul>
-    			<li class="clearfix">
-	    			<span class="qj" typeid="e430ee78-7b11-4437-9ca2-2201807640d0">E系列15寸：</span>
-	    			<div class="xilei-main">
-		    			<span id="b2306585-0b8a-11e6-943c-0050569f0752" class="de_sec_sel click_radio2 active" latag="latag_pc_detail_choose_48639_E系列15寸_b2306585-0b8a-11e6-943c-0050569f0752">i5 4GB 500GB机械 标准版</span>
-		    			<span id="b23e5d38-0b8a-11e6-943c-0050569f0752" class="de_sec_sel click_radio2" latag="latag_pc_detail_choose_48639_E系列15寸_b23e5d38-0b8a-11e6-943c-0050569f0752">i5  4GB  1TB机械   标准版</span>
-		    			<span id="b245b8df-0b8a-11e6-943c-0050569f0752" class="de_sec_sel click_radio2" latag="latag_pc_detail_choose_48639_E系列15寸_b245b8df-0b8a-11e6-943c-0050569f0752">i5 8GB 500GB机械 标准版</span>
-		    			<span id="8a990b5f-18dd-11e6-943c-0050569f0752" class="de_sec_sel click_radio2" latag="latag_pc_detail_choose_48639_E系列15寸_8a990b5f-18dd-11e6-943c-0050569f0752">i7 4GB 500GB机械 定制版</span>
-		    			<span id="b24c64c5-0b8a-11e6-943c-0050569f0752" class="de_sec_sel click_radio2" latag="latag_pc_detail_choose_48639_E系列15寸_b24c64c5-0b8a-11e6-943c-0050569f0752">i7  8GB   1TB机械   定制版</span>
-		    			<span id="9853e1ee-6380-11e6-b8c7-0050569f0752" class="de_sec_sel click_radio2" latag="latag_pc_detail_choose_48639_E系列15寸_9853e1ee-6380-11e6-b8c7-0050569f0752">i5 8GB 1TB机械 定制版</span>
-		    	</li>
-		    </ul> -->
+
 		<div>
 						<!-- ThinkPad 私人订制 -->
 						
 		<div class="xuan" style="">
-<!-- 		    <ul>
-		        <li class="clearfix">
-		            <span class="qj">选择服务：</span>
-		           <div class='fuwrap'>
-		            <div class="fuwub">
-   		            	<span class="abb"itle="2年内提供由于意外情况（摔、瞌、碰、进液）导致的机器故障及外观损坏保修服务"  class="selectOption click_checkbox"><i class="guan"></i>Think笔记本2年意外保修 ￥509</span> 
-   		            	<ul>
-   		            	 <li title="1年内提供由于意外情况（摔、瞌、碰、进液）导致的机器故障及外观损坏保修服务" latag="latag_pc_detail_chooseservice_48639_51725" sort="1" data-code="51725"><i class="guan"></i>Think笔记本1年意外保修 ￥255</li>
-   		            	  <span class="guan shows show_down"></span>  
-   		            	</ul>
-   		            	
-   		            </div>
-   
-   	            	  <div class="fuwus">
-   	            	  	<span title="2年内提供全国范围免费上门维修服务" latag="latag_pc_detail_chooseservice_48639_51728" sort="0" data-code="51728" class="selectOption click_checkbox"><i class="guan"></i>Think笔记本2年上门服务（全国） ￥579</span>
-   	            	   </div>
-   	            	   <div class="fuh">
-   	            	  	<span title="2年内提供机械硬盘故障换新，旧盘不回收服务" latag="latag_pc_detail_chooseservice_48639_51730" sort="0" data-code="51730" class="selectOption click_checkbox"><i class="guan"></i>Think笔记本2年硬盘不回收 ￥249</span> 
-   	            	  </div>
-   	            	</div>
-		            </div>
-		        </li>
-		    </ul> -->
+
 		</div>
 				
 							<!-- 分期文案 -->
@@ -174,7 +141,7 @@
             <div class="de_info_btn clearfix">
                 <div class="de_info_num">
                     <label class="i_box">
-                        <input class="pro_num J_input" type="text" value="1">
+                        <input class="pro_num J_input" id="goodsNumber" type="text" value="1">
                         <input class="pro_add J_add" type="button">
                         <input class="pro_less J_minus" type="button">                    
                     </label>
@@ -182,7 +149,10 @@
                 </div> 
 		                <a href="javascript:void(0);" class="de_button de_btn_buy" id="ljgm" style="" event-name="PC端_产品详情页_立即购买_ThinkPad E550 20DFA08ECD" latag="latag_pc_detail_orderimmediately_48639" title="立即购买">立即购买</a>
 		                <a href="javascript:void(0);" class="de_button de_btn_car" id="jrgwc" style="" event-name="PC端_产品详情页_加入购物车_ThinkPad E550 20DFA08ECD" latag="latag_pc_detail_addshopcart_48639" title="加入购物车">加入购物车</a>
+
+		                <input type="hidden" name="id" value="<?php echo e($goods->id); ?>">
                 </div>
+
             
 			<!-- 基本信息下部  空白位-->
         </div>
@@ -649,4 +619,18 @@
 		</div>
 	</div>
 </body>
+<script>
+	$('#jrgwc').click(function(){
+		//读取商品id
+		var id = $("input[name=id]").val();
+		
+		//库存
+		var num = $('#goodsNumber').val();
+		
+		//加入购物车
+		window.location.href="/addCar?id="+id+"&num="+num;
+	});	
+
+
+</script>
 </html>
