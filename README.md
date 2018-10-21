@@ -1,6 +1,6 @@
 # 该项目为联想后台管理系统
 
-![](F:\1.png)
+![](D:\webdocs\lenovo\public\screenshotimgs\1.png)
 
 ###### 模块：
 
@@ -40,12 +40,12 @@
 
 ## **其他的我也不多详细说了，可以自行下载去一探究竟**
 
-![](F:\2.png)
+![](D:\webdocs\lenovo\public\screenshotimgs\2.png)
 
-![](F:\3.png)
+![](D:\webdocs\lenovo\public\screenshotimgs\3.png)
 
-![](F:\4.png)
+![](D:\webdocs\lenovo\public\screenshotimgs\4.png)
 
-![](F:\5.png)
+![](D:\webdocs\lenovo\public\screenshotimgs\5.png)
 
-![](F:\6.png)
+![](D:\webdocs\lenovo\public\screenshotimgs\6.png)
