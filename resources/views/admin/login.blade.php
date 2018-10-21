@@ -41,7 +41,7 @@
 
 							<div class="input-group">
 								<span class="input-group-addon"> <span class="glyphicon glyphicon-lock"></span></span>
-								<input type="text" name="password" class="form-control" placeholder="Username">
+								<input type="password" name="password" class="form-control" placeholder="Username">
 							</div>
 
 							<div class="input-group">
@@ -50,7 +50,7 @@
 							</div>
 
 							<div class="input-group" >
-								<input type="submit" value="提交" class="btn btn-sm btn-success">
+								<input type="submit" value="登录" class="btn btn-sm btn-success">
 								&nbsp;
 								&nbsp;
 								<input type="reset" value="重置" class="btn btn-sm btn-danger">

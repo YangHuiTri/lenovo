@@ -46,7 +46,7 @@
         </li>
         <?php if(session('lenovoHomeUserInfo')): ?>
           <li><a href="/logout">退出</a><span class="gang">|</span></li>
-          <li><a href="">欢迎 <?php echo e(session('lenovoHomeUserInfo.name')?session('lenovoHomeUserInfo.name'):session('lenovoHomeUserInfo.email')); ?> 登录</a><span class="gang">|</span></li>
+          <li><a href="">欢迎 <?php echo e(session('lenovoHomeUserInfo.name')?session('lenovoHomeUserInfo.name'):session('lenovoHomeUserInfo.email')); ?> </a><span class="gang">|</span></li>
         <?php else: ?>
           <li><a class="zc" href="/reg">注册</a><span class="gang">|</span></li>
           <li><a class="dl"href="/login">登录</a><span class="gang">|</span></li>
