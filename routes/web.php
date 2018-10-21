@@ -53,15 +53,24 @@
 	Route::any('/savePass/{id}/{token}','Home\LoginController@savePass');
 
 	//购物车页面
-	Route::get('car','Home\CarController@index');
+	Route::get('/car','Home\CarController@index');
 
 	//加入购物车
-	Route::get('addCar','Home\CarController@addCar');
+	Route::get('/addCar','Home\CarController@addCar');
 
 	//购物车ajax调整数量
-	Route::post('CarAdd','Home\CarController@CarAdd');
-	Route::post('CarJian','Home\CarController@CarJian');
-	Route::post('CarDel','Home\CarController@CarDel');
+	Route::post('/CarAdd','Home\CarController@CarAdd');
+	Route::post('/CarJian','Home\CarController@CarJian');
+	Route::post('/CarDel','Home\CarController@CarDel');
+
+	//结算页面
+	Route::post('/jiesuan','Home\CarController@jiesuan');
+
+	//生成订单
+	Route::post('/orders','Home\OrdersController@index');
+
+	//支付路由
+	Route::get('/pay/{code}','Home\OrdersController@pay');
 
 
 

@@ -15,7 +15,7 @@
 
 <!-- logo -->
 <div class="top_logob">
-    <img src="/style/home/img/pic-13.jpg" class="top_logob_imga">
+    <a href="/"><img src="/style/home/img/pic-13.jpg" class="top_logob_imga"></a>
     <img src="/style/home/img/pic-12.jpg" class="top_logob_imgb">
 </div>
 

@@ -105,7 +105,37 @@ class CarController extends Controller
     	$request->session()->put('shop',$shop);
     	//返回
     	echo 1;
+    }
 
+    //结算页面
+    public function jiesuan(Request $request){
+    	//查询当前用户的收货地址
+    	$uid = session('lenovoHomeUserInfo.id');
+    	//查询数据
+    	$addr = DB::table('addr')->where('uid','=',$uid)->get();
+
+
+
+
+    	//接收商品数据
+    	$idArr = $request->get('goods');
+
+    	//读取session
+    	$shop = session('shop');
+    	//声明新数组
+    	$newArr = array();
+    	//遍历购物车中所有的商品
+    	foreach ($idArr as $key => $value) {
+    		foreach ($shop as $k => $v) {
+    			//判断是否是用户选择的商品
+    			if($v['id'] == $value){
+    				$newArr[] = $v;
+    			}
+    		}
+    	}
+
+    	//加载结算页面
+    	return view('home.jiesuan')->with('newShop',$newArr)->with('addr',$addr);
     }
 
 
