@@ -53,4 +53,63 @@ class CarController extends Controller
 
     	return redirect("car");
     }
+
+    //ajax购物车添加
+    public function CarAdd(Request $request){
+    	//获取修改的id
+    	$id = $request->get('id');
+    	//获取session中的商品数据
+    	$shop = session('shop');
+    	//遍历数据
+    	foreach ($shop as $key => $value) {
+    		if($value['id'] == $id){
+    			$shop[$key]['num'] = ++$shop[$key]['num'];
+    		}
+    	}
+    	//写入session
+    	$request->session()->put('shop',$shop);
+    	echo 1;
+    }
+
+    //ajax购物车减少
+    public function CarJian(Request $request){
+    	//获取修改的id
+    	$id = $request->get('id');
+    	//获取session中的商品数据
+    	$shop = session('shop');
+    	//遍历数据
+    	foreach ($shop as $key => $value) {
+    		if($value['id'] == $id){
+    			$shop[$key]['num'] = --$shop[$key]['num'];
+    		}
+    	}
+    	//写入session
+    	$request->session()->put('shop',$shop);
+    	echo 1;
+    }
+
+    //ajax购物车删除
+    public function CarDel(Request $request){
+    	//接收id
+    	$id = $request->get('id');
+    	//获取购物车中所有的商品数据
+    	$shop = session('shop');
+    	//遍历数据
+    	foreach ($shop as $key => $value) {
+    		//判断需要删除的数据
+    		if($value['id'] == $id){
+    			unset($shop[$key]);
+    		}
+    	}
+    	//写入session
+    	$request->session()->put('shop',$shop);
+    	//返回
+    	echo 1;
+
+    }
+
+
+
+
+
 }

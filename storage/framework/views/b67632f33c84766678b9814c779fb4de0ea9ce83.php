@@ -70,6 +70,7 @@
 	                <!--满减-->
 	             </td>
                 <td width="152" text-align:center>
+
                     <label class="i_box clearfix">
                         <input class="pro_less J_minus"  money="<?php echo e($car['goodsInfo']->price); ?>" ids="<?php echo e($car['goodsInfo']->id); ?>" type="button" value="-" >
                         <input class="pro_num J_input" type="text" value="<?php echo e($car['num']); ?>" style="ime-mode: disabled;" >

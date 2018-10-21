@@ -58,6 +58,11 @@
 	//加入购物车
 	Route::get('addCar','Home\CarController@addCar');
 
+	//购物车ajax调整数量
+	Route::post('CarAdd','Home\CarController@CarAdd');
+	Route::post('CarJian','Home\CarController@CarJian');
+	Route::post('CarDel','Home\CarController@CarDel');
+
 
 
 
